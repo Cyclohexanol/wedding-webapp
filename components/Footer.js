@@ -1,8 +1,6 @@
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import LanguageSwitchLink from './LanguageSwitchLink'
-import pkg from 'next-i18next/package.json'
-import pkgLD from 'next-language-detector/package.json'
 
 import i18nextConfig from '../next-i18next.config'
 

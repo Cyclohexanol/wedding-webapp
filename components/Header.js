@@ -5,10 +5,9 @@ export const Header = ({ heading, title }) => (
     <Head>
       <title>{title}</title>
     </Head>
-    <h2>
-      next-language-detector example
-      <hr />
-    </h2>
+        <h1 className="text-3xl font-bold underline">
+            Hello world!
+        </h1>
     <h1>{heading}</h1>
   </>
 )
