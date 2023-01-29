@@ -1,0 +1,8 @@
+{
+    "back-to-home": "revenir à la page d'accueil",
+    "error-with-status": "Une erreur s'est produite: ({{statusCode}})",
+    "error-without-status": "Une erreur s'est produite",
+    "h1": "Un exemple simple",
+    "title": "Accueil | next-i18next",
+    "to-second-page": "Deuxième page"
+}
