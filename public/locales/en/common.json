@@ -1,8 +1,14 @@
 {
-  "back-to-home": "Back to home",
-  "error-with-status": "A {{statusCode}} error occurred on server",
-  "error-without-status": "An error occurred on the server",
-  "h1": "A simple example",
-  "title": "Home | next-i18next",
-  "to-second-page": "To second page"
+    "back-to-home": "Back to home",
+    "error-with-status": "A {{statusCode}} error occurred on server",
+    "error-without-status": "An error occurred on the server",
+    "h1": "Saamb Wedding App",
+    "title": "Saamb | Login",
+    "welcome-title": "Welcome to Saamb Wedding App",
+    "login-instructions": "You will find in your invitation your group name and access code. These access combinaison are common to all the members of your group.",
+    "login-issue": "If you encounter a problem, please contact Ambroise.",
+    "username": "Group name",
+    "password": "Access code",
+    "login-title": "Please login using your group name and access code",
+    "switch-laguage": "Lang:"
 }

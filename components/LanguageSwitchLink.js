@@ -21,7 +21,7 @@ const LanguageSwitchLink = ({ locale, ...rest }) => {
   return (
     <Link href={href}>
       <button
-        style={{ fontSize: 'small' }}
+              className="bg-transparent hover:bg-stone-600 text-stone-600 font-semibold hover:text-white py-2 px-4 border border-stone-600 hover:border-transparent rounded"
         onClick={() => languageDetector.cache(locale)}
       >
         {locale}

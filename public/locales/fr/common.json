@@ -2,7 +2,14 @@
     "back-to-home": "revenir à la page d'accueil",
     "error-with-status": "Une erreur s'est produite: ({{statusCode}})",
     "error-without-status": "Une erreur s'est produite",
-    "h1": "Un exemple simple",
-    "title": "Accueil | next-i18next",
-    "to-second-page": "Deuxième page"
+    "h1": "Saamb Wedding App",
+    "title": "Saamb | Login",
+    "welcome-title": "Bienvenue sur la plateforme de mariage Saamb",
+    "login-instructions": "Sur votre invitation, vous trouverez votre nom de groupe ainsi que votre code d'accès. Ces données sont communes à toutes les personnes de votre groupe.",
+    "login-issue": "En cas de problème, essayez d'étiendre et de rallumer votre machine. Si celà ne fonctionne vraiment pas, merci d'envoyer un message à Ambroise.",
+    "username": "Nom du groupe",
+    "password": "Code d'accès",
+    "login-title": "Merci de vous connecter à l'aide de vos identifiants",
+    "login": "Se connecter",
+    "switch-laguage":  "Lang:"
 }
