@@ -3,12 +3,19 @@
     "error-with-status": "A {{statusCode}} error occurred on server",
     "error-without-status": "An error occurred on the server",
     "h1": "Saamb Wedding App",
-    "title": "Saamb | Login",
+    "title": "Saamb | Wedding",
     "welcome-title": "Welcome to Saamb Wedding App",
     "login-instructions": "You will find in your invitation your group name and access code. These access combinaison are common to all the members of your group.",
     "login-issue": "If you encounter a problem, please contact Ambroise.",
     "username": "Group name",
     "password": "Access code",
+    "login": "Log In",
     "login-title": "Please login using your group name and access code",
-    "switch-laguage": "Lang:"
+    "switch-laguage": "Lang:",
+    "copyright-text": "© 2023 Saamb. All rights reserved.",
+    "dev-by": "Developed by Ambroise",
+    "logout": "Logout",
+    "register": "Register",
+    "wish-list": "Wish List",
+    "useful-info": "Useful Info"
 }

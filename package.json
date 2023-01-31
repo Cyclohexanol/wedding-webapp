@@ -1,38 +1,38 @@
 {
-  "name": "example-ssg",
-  "version": "1.0.0",
-  "license": "MIT",
-  "scripts": {
-    "404": "cp out/404/index.html out/404.html",
-    "dev": "next dev",
-    "dev-css": "npx tailwindcss -i ./public/globals.css -o ./css/output.css --watch",
-    "build": "next build && next export",
-    "postbuild": "npm run 404",
-    "server": "next start",
-    "start": "npm run dev",
-    "lint": "next lint",
-    "test": "npm run lint",
-    "serve": "http-server out -p 8080",
-    "downloadLocales": "locize download --project-id=0842ada9-1d1d-4d48-ab27-08f6a132f558 --ver=latest --clean=true --path=./public/locales",
-    "clean": "rimraf .next out"
-  },
-  "dependencies": {
-    "@svgr/webpack": "^6.5.1",
-    "i18next": "22.4.5",
-    "next": "13.0.7",
-    "next-i18next": "13.0.1",
-    "next-language-detector": "^1.0.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-i18next": "^12.1.1"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.13",
-    "eslint-config-next": "13.0.7",
-    "http-server": "14.1.1",
-    "locize-cli": "7.13.1",
-    "postcss": "^8.4.21",
-    "rimraf": "^3.0.2",
-    "tailwindcss": "^3.2.4"
-  }
+    "name": "example-ssg",
+    "version": "1.0.0",
+    "license": "MIT",
+    "scripts": {
+        "404": "cp out/404/index.html out/404.html",
+        "dev": "next dev",
+        "dev-css": "npx tailwindcss -i ./public/globals.css -o ./css/output.css --watch",
+        "build": "next build && next export",
+        "postbuild": "npm run 404",
+        "server": "next start",
+        "start": "npm run dev",
+        "lint": "next lint",
+        "test": "npm run lint",
+        "serve": "http-server out -p 8080",
+        "downloadLocales": "locize download --project-id=0842ada9-1d1d-4d48-ab27-08f6a132f558 --ver=latest --clean=true --path=./public/locales",
+        "clean": "rimraf .next out"
+    },
+    "dependencies": {
+        "@svgr/webpack": "^6.5.1",
+        "i18next": "22.4.5",
+        "next": "13.0.7",
+        "next-i18next": "13.0.1",
+        "next-language-detector": "^1.0.2",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-i18next": "^12.1.1"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.13",
+        "eslint-config-next": "13.0.7",
+        "http-server": "14.1.1",
+        "locize-cli": "7.13.1",
+        "postcss": "^8.4.21",
+        "rimraf": "^3.0.2",
+        "tailwindcss": "^3.2.4"
+    }
 }

@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\components"
   ],
+  "SelectedNode": "\\components\\Header.js",
   "PreviewInSolutionExplorer": false
 }
