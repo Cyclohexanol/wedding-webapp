@@ -1,4 +1,5 @@
 import Link from '../../../components/Link'
+import Head from 'next/head'
 
 import { useTranslation } from 'next-i18next'
 import {
@@ -6,13 +7,11 @@ import {
     getI18nProps,
 } from '../../../lib/getStatic'
 
-import { Header } from '../../../components/Header'
+// import { Header } from '../../../components/Header'
 import { Footer } from '../../../components/Footer'
-import { RegisterForm } from '../../../components/RegisterForm'
 
-const Register = () => {
+const Home = () => {
     const { t } = useTranslation(['common'])
-
     const family = [
         {
             firstName: 'James',
@@ -39,25 +38,31 @@ const Register = () => {
             songRequest: 'none'
         }
     ]
+            
 
     return (
         <>
             <main>
-                <Header title={t('title')} />
+                <Head>
+                    <title>{t('title')}</title>
+                </Head>
                 <div className="flex items-center justify-left px-6 py-2 border-b border-stone-300 bg-stone-100">
-                    <p>{t('register')}</p>
+                    <p>{t('who-are-you')}</p>
                 </div>
                 <div className="container mx-auto">
-                    <div className="m-4 grid grid-cols-1 gap-4">
-                        {family.map((member) => (<RegisterForm member={member} />))}
-                        <Link
-                            href="/auth/home"
-                            className="text-center inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded 
-                                                                shadow-md bg-green-900 hover:bg-stone-400 hover:shadow-lg focus:shadow-lg focus:outline-none 
-                                                                focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
-                        >
-                            {t('save')}
-                        </Link>
+                    <div className="m-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+                        {family.map( (member) => (
+                                <Link
+                                href={member.registered ? "/auth/home" : "/auth/register"}
+                                    className="bg-green-900 hover:bg-stone-400 font-semibold 
+                                        text-white py-2 px-4 rounded"
+                                >
+                                    <div className="flex justify-center items-center flex-wrap flex-col">
+                                        <p>{member.firstName} {member.lastName}</p>
+                                    <p className="text-xs italic">{member.registered ? t('registered') : t('not-registered')}</p>
+                                    </div>
+                                </Link>
+                        ))}  
                     </div>
                 </div>
             </main>
@@ -66,7 +71,7 @@ const Register = () => {
     )
 }
 
-export default Register
+export default Home
 
 
 // const getStaticProps = makeStaticProps(['second-page', 'common', 'footer'])

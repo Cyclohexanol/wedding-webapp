@@ -64,7 +64,7 @@ const Homepage = () => {
                                                       />
                                                   </div>
                                                   <div className="text-center pt-1 mb-12 pb-1">
-                                                      <Link href="/auth/home">
+                                                      <Link href="/auth/user-select">
                                                           <button
                                                               className="inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded 
                                                                 shadow-md bg-green-900 hover:bg-stone-400 hover:shadow-lg focus:shadow-lg focus:outline-none 

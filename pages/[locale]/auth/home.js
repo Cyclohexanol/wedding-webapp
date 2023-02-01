@@ -8,10 +8,14 @@ import {
 
 import { Header } from '../../../components/Header'
 import { Footer } from '../../../components/Footer'
+import { MenuIcon } from '../../../components/MenuIcon'
 
-import GiftSVG from "../../../public/images/gift.svg";
-import RegisterSVG from "../../../public/images/clipboard.svg";
-import InformationSVG from "../../../public/images/information.svg";
+import GiftSVG from "../../../public/images/gift-white.svg";
+import RegisterSVG from "../../../public/images/clipboard-white.svg";
+import InformationSVG from "../../../public/images/information-white.svg";
+import QuizzSVG from "../../../public/images/quizz-white.svg";
+import BabyPicSVG from "../../../public/images/baby-pic-white.svg";
+import ChairSVG from "../../../public/images/chair-white.svg";
 
 const Home = () => {
     const { t } = useTranslation(['common'])
@@ -22,36 +26,30 @@ const Home = () => {
                 <Header title={t('title')} />
                 <div className="container mx-auto">
                     <div className="m-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-                        <Link
-                            href="/auth/register"
-                            className="bg-transparent hover:bg-stone-400 text-black font-semibold 
-                                    hover:text-white py-2 px-4 border border-stone-600 hover:border-transparent rounded"
-                        >
-                            <div className="flex justify-center items-center flex-wrap flex-col">
-                                <RegisterSVG className="w-12 h-12 m-2 hover:stroke-white" />
-                                <p>{t('register')}</p>
-                            </div>
-                        </Link>
-                        <Link
-                            href="/auth/gift"
-                            className="bg-transparent hover:bg-stone-400 text-black font-semibold 
-                                    hover:text-white py-2 px-4 border border-stone-600 hover:border-transparent rounded"
-                        >
-                            <div className="flex justify-center items-center flex-wrap flex-col">
-                                <GiftSVG className="w-12 h-12 m-2 hover:stroke-white" />
-                                <p>{t('wish-list')}</p>
-                            </div>
-                        </Link>
-                        <Link
-                            href="/auth/info"
-                            className="bg-transparent hover:bg-stone-400 text-black font-semibold 
-                                    hover:text-white py-2 px-4 border border-stone-600 hover:border-transparent rounded"
-                        >
-                            <div className="flex justify-center items-center flex-wrap flex-col">
-                                <InformationSVG className="w-12 h-12 m-2 hover:stroke-white" />
-                                <p>{t('useful-info')}</p>
-                            </div>
-                        </Link>
+                        <MenuIcon linkref="/auth/register">
+                            <RegisterSVG className="w-12 h-12 m-2 hover:stroke-white" />
+                            <p>{t('register')}</p>
+                        </MenuIcon>
+                        <MenuIcon linkref="/auth/gift">
+                            <GiftSVG className="w-12 h-12 m-2 hover:stroke-white" />
+                            <p>{t('wish-list')}</p>
+                        </MenuIcon>
+                        <MenuIcon linkref="/auth/info">
+                            <InformationSVG className="w-12 h-12 m-2 hover:stroke-white" />
+                            <p>{t('useful-info')}</p>
+                        </MenuIcon>
+                        <MenuIcon linkref="/auth/info">
+                            <QuizzSVG className="w-12 h-12 m-2 hover:stroke-white" />
+                            <p>{t('quizz')}</p>
+                        </MenuIcon>
+                        <MenuIcon linkref="/auth/info">
+                            <BabyPicSVG className="w-12 h-12 m-2 hover:stroke-white" />
+                            <p>{t('baby-pic-collector')}</p>
+                        </MenuIcon>
+                        <MenuIcon linkref="/auth/info">
+                            <ChairSVG className="w-12 h-12 m-2 hover:stroke-white" />
+                            <p>{t('table-seating')}</p>
+                        </MenuIcon>
                     </div>
                 </div>
             </main>
