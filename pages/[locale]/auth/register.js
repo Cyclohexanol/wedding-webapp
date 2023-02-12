@@ -10,35 +10,16 @@ import { Header } from '../../../components/Header'
 import { Footer } from '../../../components/Footer'
 import { RegisterForm } from '../../../components/RegisterForm'
 
+import { userService } from '../../../services/user.service';
+
+
+
+
+
 const Register = () => {
     const { t } = useTranslation(['common'])
 
-    const family = [
-        {
-            firstName: 'James',
-            lastName: 'Brown',
-            registered: false,
-            diet: 'none',
-            allergies: 'none',
-            songRequest: 'none'
-        },
-        {
-            firstName: 'Jessy',
-            lastName: 'Brown',
-            registered: false,
-            diet: 'none',
-            allergies: 'none',
-            songRequest: 'none'
-        },
-        {
-            firstName: 'John',
-            lastName: 'Brown',
-            registered: true,
-            diet: 'none',
-            allergies: 'none',
-            songRequest: 'none'
-        }
-    ]
+   
 
     return (
         <>
@@ -49,14 +30,15 @@ const Register = () => {
                 </div>
                 <div className="container mx-auto">
                     <div className="m-4 grid grid-cols-1 gap-4">
-                        {family.map((member) => (<RegisterForm member={member} />))}
+                        {userService.infoValue && userService.infoValue?.users.map((member) => (<RegisterForm key={member._id} member={member} />))}
                         <Link
+                            
                             href="/auth/home"
                             className="text-center inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded 
                                                                 shadow-md bg-green-900 hover:bg-stone-400 hover:shadow-lg focus:shadow-lg focus:outline-none 
                                                                 focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
                         >
-                            {t('save')}
+                            {t('confirm')}
                         </Link>
                     </div>
                 </div>

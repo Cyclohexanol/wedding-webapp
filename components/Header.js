@@ -1,18 +1,34 @@
 import Head from 'next/head'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'next-i18next'
 import LogoutModal from './LogoutModal'
 
 import Link from './Link'
 
+import { useRouter } from 'next/router'
+
 import LogoutSVG from "../public/images/exit.svg";
 import HomeSVG from "../public/images/home.svg";
+import { userService } from '../services/user.service';
 
-export const Header = ({ heading, title }) => {
+export const Header = ({ title }) => {
     
     const { t } = useTranslation('common')
+    const router = useRouter()
 
-    const [showLogout, setShowLogout] = useState(false)
+
+    const [memberData, setMemberData] = useState()
+
+    useEffect(() => {
+        setMemberData(userService.memberValue);
+    }, []);
+
+    const logout = () => {
+        userService.logout()
+        // get return url from query parameters or default to '/auth/user-select'
+        const returnUrl = router.query.returnUrl || '/';
+        router.push(returnUrl);
+    }
 
     return (
         <>
@@ -27,16 +43,15 @@ export const Header = ({ heading, title }) => {
                         <HomeSVG className="hover:stroke-white w-7 h-7" />
                     </button>
                 </Link>
-                <Link href="/">
-                    <button
-                        className="bg-transparent h-35 hover:bg-stone-400 text-stone-600 font-semibold hover:text-white py-2 px-4 border border-stone-600 hover:border-transparent rounded"
-                    >
-                        <LogoutSVG className="hover:stroke-white w-6 h-6" />
-                    </button>
-                </Link>
+                <p>{memberData && memberData?.firstName}</p>
+                <button
+                    onClick={() => logout()}
+                    className="bg-transparent h-35 hover:bg-stone-400 text-stone-600 font-semibold hover:text-white py-2 px-4 border border-stone-600 hover:border-transparent rounded"
+                >
+                    <LogoutSVG className="hover:stroke-white w-6 h-6" />
+                </button>
                 
             </div>
-            <LogoutModal show={showLogout} onClose={() => setShowLogout(false)} />
         </>
     )
 }

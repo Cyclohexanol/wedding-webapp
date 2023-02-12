@@ -9,36 +9,10 @@ import {
 
 // import { Header } from '../../../components/Header'
 import { Footer } from '../../../components/Footer'
+import { userService } from '../../../services/user.service';
 
 const Home = () => {
     const { t } = useTranslation(['common'])
-    const family = [
-        {
-            firstName: 'James',
-            lastName: 'Brown',
-            registered: false,
-            diet: 'none',
-            allergies: 'none',
-            songRequest: 'none'
-        },
-        {
-            firstName: 'Jessy',
-            lastName: 'Brown',
-            registered: false,
-            diet: 'none',
-            allergies: 'none',
-            songRequest: 'none'
-        },
-        {
-            firstName: 'John',
-            lastName: 'Brown',
-            registered: true,
-            diet: 'none',
-            allergies: 'none',
-            songRequest: 'none'
-        }
-    ]
-            
 
     return (
         <>
@@ -51,15 +25,17 @@ const Home = () => {
                 </div>
                 <div className="container mx-auto">
                     <div className="m-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-                        {family.map( (member) => (
+                        {userService.infoValue && userService.infoValue?.users.map( (member) => (
                                 <Link
                                 href={member.registered ? "/auth/home" : "/auth/register"}
-                                    className="bg-green-900 hover:bg-stone-400 font-semibold 
-                                        text-white py-2 px-4 rounded"
+                                className="border border-green-900 hover:bg-stone-200 font-semibold 
+                                        text-black py-2 px-4 rounded"
+                                key={member._id}
+                                onClick={() => userService.setActiveMember(member) }
                                 >
                                     <div className="flex justify-center items-center flex-wrap flex-col">
-                                        <p>{member.firstName} {member.lastName}</p>
-                                    <p className="text-xs italic">{member.registered ? t('registered') : t('not-registered')}</p>
+                                    <p>{member.firstName} {member.lastName}</p>
+                                    <p className={member.registrationStatus == "Registered" ? "text-green-900 text-xs italic" : "text-red-600 text-xs italic"} >{member.registrationStatus == "Registered" ? t('registered') : t('not-registered')}</p>
                                     </div>
                                 </Link>
                         ))}  

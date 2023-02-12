@@ -4,7 +4,7 @@
     "error-without-status": "An error occurred on the server",
     "h1": "Saamb Wedding App",
     "title": "Saamb | Wedding",
-    "welcome-title": "Welcome to Saamb Wedding App",
+    "welcome-title": "Welcome to Sarah & Ambroise's Wedding App",
     "login-instructions": "You will find in your invitation your group name and access code. These access combinaison are common to all the members of your group.",
     "login-issue": "If you encounter a problem, please contact Ambroise.",
     "username": "Group name",
@@ -12,7 +12,8 @@
     "login": "Log In",
     "login-title": "Please login using your group name and access code",
     "switch-laguage": "Lang:",
-    "copyright-text": "© 2023 Saamb. All rights reserved.",
+    "copyright-text": "© 2023 ",
+    "copyright-text-2":"All rights reserved.",
     "dev-by": "Developed by Ambroise",
     "logout": "Logout",
     "register": "Register",
@@ -37,5 +38,7 @@
     "leave-blank": "Leave blank if you don't have any",
     "song-request-placeholder": "Let our DJ know what you want to hear",
     "song-request-text": "Song request",
-    "save": "Enregistrer"
+    "save": "Save",
+    "confirm":  "Confirm",
+    "wish-list-explaination": "We will be taking a 2 months trip around the world next year. If you would like to contribute in making our trip even more memorable, please find below our wish list. Once you have selected the items you would like to contribute to, you will be prompted payment information. If you would like to stay anonymous or pay in cash, a box will be present at the wedding. Thank you in advance for you generosity!"
 }

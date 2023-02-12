@@ -27,10 +27,12 @@ export const Footer = () => {
                   <p>
                       {t('dev-by')}
                   </p>
-                  <p>
-                      {t('copyright-text')}
-                  </p>
-                  <ChiliSVG className="hover:stroke-white w-16 h-16" />
+                  <div className="flex gap-2 ">
+                      <span>{t('copyright-text')}</span>
+                      <ChiliSVG className="hover:stroke-white w-6 h-6" />
+                      <span>{t('copyright-text-2')}</span>
+                  </div>
+                  
               </div>
           </div>
     </footer>

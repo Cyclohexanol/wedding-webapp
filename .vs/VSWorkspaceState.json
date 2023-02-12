@@ -1,12 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\components",
-    "\\pages",
+    "\\helpers",
     "\\pages\\auth",
     "\\pages\\[locale]",
-    "\\pages\\[locale]\\auth"
+    "\\pages\\[locale]\\auth",
+    "\\services"
   ],
-  "SelectedNode": "\\components\\LanguageSwitchLink.js",
+  "SelectedNode": "\\services\\user.service.js",
   "PreviewInSolutionExplorer": false
 }

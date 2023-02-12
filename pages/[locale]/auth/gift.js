@@ -16,8 +16,13 @@ const Gift = () => {
         <>
             <main>
                 <Header title={t('title')} />
-                <div className="m-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-                    Wish list placeholder
+                <div className="flex items-center justify-left px-6 py-2 border-b border-stone-300 bg-stone-100">
+                    {t('wish-list-explaination')}
+                </div>
+                <div className="m-4 grid grid-cols-1 gap-4">
+                    <div className="bg-stone-100 border border-green-900 hover:bg-stone-200 font-semibold text-block py-2 px-4 rounded flex flex-col">
+                        <p>Something</p>
+                    </div>
                 </div>
             </main>
             <Footer />

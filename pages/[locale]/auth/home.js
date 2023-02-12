@@ -10,12 +10,12 @@ import { Header } from '../../../components/Header'
 import { Footer } from '../../../components/Footer'
 import { MenuIcon } from '../../../components/MenuIcon'
 
-import GiftSVG from "../../../public/images/gift-white.svg";
-import RegisterSVG from "../../../public/images/clipboard-white.svg";
-import InformationSVG from "../../../public/images/information-white.svg";
-import QuizzSVG from "../../../public/images/quizz-white.svg";
-import BabyPicSVG from "../../../public/images/baby-pic-white.svg";
-import ChairSVG from "../../../public/images/chair-white.svg";
+import GiftSVG from "../../../public/images/gift-green.svg";
+import RegisterSVG from "../../../public/images/clipboard-green.svg";
+import InformationSVG from "../../../public/images/info-green.svg";
+import QuizzSVG from "../../../public/images/quizz-green.svg";
+import BabyPicSVG from "../../../public/images/camera-green.svg";
+import ChairSVG from "../../../public/images/chair-green.svg";
 
 const Home = () => {
     const { t } = useTranslation(['common'])

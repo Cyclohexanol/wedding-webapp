@@ -1,22 +1,57 @@
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { getStaticPaths, makeStaticProps } from '../../lib/getStatic'
+import { useEffect } from "react";
 import i18nextConfig from '../../next-i18next.config'
-import Link from '../../components/Link'
+// import Link from '../../components/Link'
 import Head from 'next/head'
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
 
-import { Header } from '../../components/Header'
+// import { Header } from '../../components/Header'
 // import { Footer } from '../../components/Footer'
 import LanguageSwitchLink from '../../components/LanguageSwitchLink'
 
 import IntSVG from "../../public/images/global.svg";
 import ChiliSVG from "../../public/images/chili.svg";
+import { userService } from '../../services/user.service';
+import { alertService } from '../../services/alert.service';
 
 const Homepage = () => {
     const router = useRouter()
     const { t } = useTranslation(['common', 'footer'])
     const currentLocale =
         router.query.locale || i18nextConfig.i18n.defaultLocale
+
+    const validationSchema = Yup.object().shape({
+        name: Yup.string().required('Group name is required'),
+        password: Yup.string().required('Access code is required')
+    });
+    const formOptions = { resolver: yupResolver(validationSchema) };
+    const { register, handleSubmit, formState } = useForm(formOptions);
+    const { errors } = formState;
+
+    useEffect(() => {
+        const info = localStorage.getItem("info");
+        const member = localStorage.getItem("member");
+
+        if (info && member) {
+            router.push('/auth/home')
+        } else if (info) {
+            router.push('/auth/user-select')
+        }
+    }, []);
+
+    function onSubmit({ name, password }) {
+        return userService.login(name, password)
+            .then(() => {
+                // get return url from query parameters or default to '/auth/user-select'
+                const returnUrl = router.query.returnUrl || '/auth/user-select';
+                router.push(returnUrl);
+            })
+            .catch(alertService.error);
+    }
 
   return (
     <>
@@ -45,40 +80,44 @@ const Homepage = () => {
                                       </div>
                                       <div className="lg:w-6/12 flex items-center lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none">
                                           <div className="text-black px-4 py-6 md:p-12 md:mx-6">
-                                              <form>
-                                                  <p className="mb-4 text-sm italic">{t('login-title')}</p>
-                                                  <div className="mb-4">
-                                                      <input
-                                                          type="text"
-                                                          className="form-control block w-full px-3 py-1.5 text-base font-normal text-stone-700 bg-white bg-clip-padding border border-solid border-stone-300 rounded transition ease-in-out m-0 focus:text-stone-700 focus:bg-white focus:border-green-900 focus:outline-none"
-                                                          id="exampleFormControlInput1"
-                                                          placeholder={t('username')}
-                                                      />
+                                              <form onSubmit={handleSubmit(onSubmit)}>
+                                                    <p className="mb-4 text-sm italic">{t('login-title')}</p>
+                                                    <div className="mb-4">
+                                                        <input
+                                                            type="text"
+                                                            className="form-control block w-full px-3 py-1.5 text-base font-normal text-stone-700 bg-white bg-clip-padding border border-solid border-stone-300 rounded transition ease-in-out m-0 focus:text-stone-700 focus:bg-white focus:border-green-900 focus:outline-none"
+                                                          id="name"
+                                                          {...register('name')}
+                                                            placeholder={t('username')}
+                                                        />
+                                                      </div>
+                                                      <div className="invalid-feedback">{errors.name?.message}</div>
+                                                    <div className="mb-4">
+                                                        <input
+                                                            type="password"
+                                                            className="form-control block w-full px-3 py-1.5 text-base font-normal text-stone-700 bg-white bg-clip-padding border border-solid border-stone-300 rounded transition ease-in-out m-0 focus:text-stone-700 focus:bg-white focus:border-green-900 focus:outline-none"
+                                                          id="password"
+                                                          {...register('password')}
+                                                            placeholder={t('password')}
+                                                        />
                                                   </div>
-                                                  <div className="mb-4">
-                                                      <input
-                                                          type="password"
-                                                          className="form-control block w-full px-3 py-1.5 text-base font-normal text-stone-700 bg-white bg-clip-padding border border-solid border-stone-300 rounded transition ease-in-out m-0 focus:text-stone-700 focus:bg-white focus:border-green-900 focus:outline-none"
-                                                          id="exampleFormControlInput1"
-                                                          placeholder={t('password')}
-                                                      />
-                                                  </div>
-                                                  <div className="text-center pt-1 mb-12 pb-1">
-                                                      <Link href="/auth/user-select">
-                                                          <button
-                                                              className="inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded 
+                                                  <div className="invalid-feedback">{errors.password?.message}</div>
+                                                    <div className="text-center pt-1 mb-12 pb-1">
+                                                            <button
+                                                                className="inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded 
                                                                 shadow-md bg-green-900 hover:bg-stone-400 hover:shadow-lg focus:shadow-lg focus:outline-none 
                                                                 focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
-                                                              type="button"
-                                                              data-mdb-ripple="true"
-                                                              data-mdb-ripple-color="light"
+                                                                type="submit"
+                                                                disabled={formState.isSubmitting}
+                                                                data-mdb-ripple="true"
+                                                                data-mdb-ripple-color="light"
                                                           
-                                                          >
+                                                            >
                                                             {t('login')}
-                                                          </button>
-                                                      </Link>
-                                                  </div>
-                                              </form>
+                                                            </button>
+
+                                                    </div>
+                                                </form>
                                               <div className="flex items-center">
                                                   <IntSVG className="w-6 h-6 mr-4" />
                                                   {i18nextConfig.i18n.locales.map(locale => {

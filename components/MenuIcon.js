@@ -12,8 +12,8 @@ export const MenuIcon = ({ linkref, children, ...rest }) => {
     return (
         <Link
             href={ linkref }
-        className="bg-green-900 hover:bg-stone-400 font-semibold 
-                                    text-white py-2 px-4 rounded"
+        className="border border-green-900 bg-stone-50 hover:bg-stone-200 font-semibold 
+                                    text-black py-2 px-4 rounded"
     >
         <div className="flex justify-center items-center flex-wrap flex-col">
                 { children }

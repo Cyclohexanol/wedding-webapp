@@ -4,7 +4,7 @@
     "error-without-status": "Une erreur s'est produite",
     "h1": "Saamb Wedding App",
     "title": "Saamb | Wedding",
-    "welcome-title": "Bienvenue sur la plateforme de mariage Saamb",
+    "welcome-title": "Bienvenue sur la plateforme de mariage de Sarah & Ambroise",
     "login-instructions": "Sur votre invitation, vous trouverez votre nom de groupe ainsi que votre code d'accès. Ces données sont communes à toutes les personnes de votre groupe.",
     "login-issue": "En cas de problème, essayez d'étiendre et de rallumer votre machine. Si celà ne fonctionne vraiment pas, merci d'envoyer un message à Ambroise.",
     "username": "Nom du groupe",
@@ -12,7 +12,8 @@
     "login-title": "Merci de vous connecter à l'aide de vos identifiants",
     "login": "Se connecter",
     "switch-laguage": "Lang:",
-    "copyright-text": "© 2023 Saamb. All rights reserved.",
+    "copyright-text": "© 2023 ",
+    "copyright-text-2": "All rights reserved.",
     "dev-by": "Développé par Ambroise",
     "logout": "Se déconnecter",
     "register": "RSVP",
@@ -37,5 +38,7 @@
     "leave-blank": "Laisser vide si aucune",
     "song-request-placeholder": "Donnez de l'inspiration à nos DJs",
     "song-request-text": "Demande de chanson",
-    "save": "Save"
+    "save": "Enregistrer",
+    "confirm": "Confirmer",
+    "wish-list-explaination": "Au mois de mars et avril 2024, nous ferons un voyage de deux mois autour du monde. Si vous souhaitez contribuer à rendre notre voyage encore plus inoubliable, veuillez trouver ci-dessous notre liste de souhaits. Une fois que vous aurez sélectionné les articles pour lesquels vous souhaitez contribuer, vous trouverez des informations sur le paiement. Si vous souhaitez rester anonyme ou payer en espèces, une boîte sera présente au mariage. Merci d'avance pour votre générosité!"
 }
