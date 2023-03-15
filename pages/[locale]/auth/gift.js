@@ -9,6 +9,7 @@ import {
 import { Header } from '../../../components/Header'
 import { Footer } from '../../../components/Footer'
 import WishItem from '../../../components/WishItem';
+import CartBanner from '../../../components/CartBanner';
 
 import { useState, useEffect } from "react";
 import { userService } from '../../../services/user.service'; // Import userService
@@ -29,6 +30,22 @@ const Gift = () => {
             });
     }, []);
 
+    const [cart, setCart] = useState([]);
+
+    const addToCart = (item) => {
+        setCart((prevCart) => {
+            const existingItemIndex = prevCart.findIndex((cartItem) => cartItem.id === item.id);
+
+            if (existingItemIndex > -1) {
+                const newCart = [...prevCart];
+                newCart[existingItemIndex].quantity += item.quantity;
+                return newCart;
+            } else {
+                return [...prevCart, item];
+            }
+        });
+    };
+
     return (
         <>
             <main>
@@ -38,9 +55,10 @@ const Gift = () => {
                 </div>
                 <div className="m-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                     {wishes.map((wish, index) => (
-                        <WishItem key={index} wish={wish} />
+                        <WishItem key={index} wish={wish} addToCart={addToCart} />
                     ))}
                 </div>
+                {cart.length > 0 && <CartBanner cart={cart} />}
             </main>
             <Footer />
         </>

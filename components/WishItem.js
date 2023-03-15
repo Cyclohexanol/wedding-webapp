@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-const WishItem = ({ wish }) => {
+const WishItem = ({ wish, addToCart }) => {
     const { t } = useTranslation();
     const [quantity, setQuantity] = useState(0);
 
@@ -17,10 +17,15 @@ const WishItem = ({ wish }) => {
                 .max(wish.quantity, 'Quantity must not be more than available quantity')
                 .required('Quantity is required')
         }),
-        onSubmit: values => {
-            // Handle submission
-            console.log('Submitted:', values);
-        }
+        onSubmit: (values) => {
+            addToCart({
+                id: wish.id,
+                title: wish.title,
+                price: wish.price,
+                quantity: parseInt(values.quantity),
+            });
+        },
+
     });
 
     const increaseQuantity = () => {
