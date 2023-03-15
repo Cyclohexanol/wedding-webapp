@@ -22,7 +22,8 @@ export const userService = {
     login,
     logout,
     updateUser,
-    updateSelfInfo
+    updateSelfInfo,
+    getAllWishes
 };
 
 function setActiveMember(member) {
@@ -76,4 +77,9 @@ function logout() {
         console.log("local storage cleared - " + userService.tokenValue + " - " + userService.memberValue)
     }
     return null
+}
+
+function getAllWishes() {
+    return fetchWrapper.get(`${baseUrl}/wishlist`)
+        .then(response => response);
 }
