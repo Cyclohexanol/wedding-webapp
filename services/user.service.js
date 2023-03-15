@@ -45,14 +45,14 @@ function login(name, password) {
 
 function updateUser(member, dietaryRestrictions, attendanceStatus, dietaryInfo, songRequest) {
     const content = {
-        user_id: member.id,
+        user_id: member._id,
         registerationStatus: "Registered",
         dietaryRestrictions,
         attendanceStatus,
         dietaryInfo,
         songRequest
     }
-    return fetchWrapper.post(`${baseUrl}/users/edit`, content )
+    return fetchWrapper.post(`${baseUrl}/users/edit`, content);
 
 }
 
