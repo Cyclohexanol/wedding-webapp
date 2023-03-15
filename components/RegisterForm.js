@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -11,16 +11,37 @@ export const RegisterForm = ({ member, ...rest }) => {
 
     const { t } = useTranslation('common')
 
-    const [showForm, setShowForm, brunch, setBrunch, camping, setCamping] = useState(false)
+    const [showForm, setShowForm] = useState(false)
+    const [brunch, setBrunch] = useState(false)
+    const [camping, setCamping] = useState(false)
+
+    // TODO: pass to props after useeffect of parent 
 
     const validationSchema = Yup.object().shape({
         attendanceStatus: Yup.string().required('Answer is required')
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
-    const { register, handleSubmit, formState } = useForm(formOptions);
+    const { register, handleSubmit, formState, setValue } = useForm(formOptions);
+
+
+    useEffect(() => {
+        if (member) {
+            setValue('attendanceStatus', member.attendanceStatus || '');
+            setValue('dietaryRestrictions', member.dietaryRestrictions || '');
+            setValue('dietaryInfo', member.dietaryInfo || '');
+            setValue('songRequest', member.songRequest || '');
+            setBrunch(member.brunch || false);
+            setCamping(member.camping || false);
+        }
+    }, [member, setValue]);
+
 
     function onSubmit(data) {
-        return userService.updateUser(member, data.dietaryRestrictions, data.attendanceStatus, data.dietaryInfo, data.songRequest)
+        return userService
+            .updateUser(member, data.dietaryRestrictions, data.attendanceStatus, data.dietaryInfo, data.songRequest, brunch, camping)
+            .then(() => {
+                window.location.reload();
+            })
             .catch(alertService.error);
     }
 
@@ -72,15 +93,15 @@ export const RegisterForm = ({ member, ...rest }) => {
                             <label className="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" value="" className="sr-only peer" onClick={() => setCamping(!camping)} />
                                 <div className="w-11 h-6 bg-stone-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-700"></div>
-                                <div class="ml-3 text-stone-900">{camping ? t('yes') : t('no') }</div>
+                                <div className="ml-3 text-stone-900">{camping ? t('yes') : t('no') }</div>
                             </label>
                         </div>
                         <div className="pt-4">
                             <label htmlFor="brunchNextDay" className="block mb-2 text-sm font-medium text-stone-900 ">{t('brunch-next-day')}</label>
-                            <label className="relative inline-flex items-center cursor-pointer" onClick={() => setBrunch(!brunch)}>
-                                <input type="checkbox" value="" className="sr-only peer" />
+                            <label className="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" value="" className="sr-only peer" onClick={() => setBrunch(!brunch)} />
                                 <div className="w-11 h-6 bg-stone-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-700"></div>
-                                <div class="ml-3 text-stone-900">{brunch ? t('yes') : t('no')}</div>
+                                <div className="ml-3 text-stone-900">{brunch ? t('yes') : t('no')}</div>
                             </label>
                         </div>
                         <div className="pt-4">

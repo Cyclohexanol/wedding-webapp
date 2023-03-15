@@ -10,9 +10,21 @@ import {
 // import { Header } from '../../../components/Header'
 import { Footer } from '../../../components/Footer'
 import { userService } from '../../../services/user.service';
+import { useEffect, useState } from 'react'
 
 const Home = () => {
     const { t } = useTranslation(['common'])
+
+    const [info, setInfo] = useState(undefined);
+
+    useEffect(() => {
+        const fetchInfos = async () => {
+            const response = await userService.updateSelfInfo()
+            console.log(response)
+            return response.group;
+        }
+        fetchInfos().then(res => setInfo(res));
+    }, [])
 
     return (
         <>
@@ -25,7 +37,7 @@ const Home = () => {
                 </div>
                 <div className="container mx-auto">
                     <div className="m-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-                        {userService.infoValue && userService.infoValue?.users.map( (member) => (
+                        {info && info.users.map( (member) => (
                                 <Link
                                 href={member.registered ? "/auth/home" : "/auth/register"}
                                 className="border border-green-900 hover:bg-stone-200 font-semibold 

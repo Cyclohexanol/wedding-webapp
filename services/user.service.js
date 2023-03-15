@@ -6,14 +6,14 @@ import { fetchWrapper } from '../helpers/fetch-wrapper';
 
 const { publicRuntimeConfig } = getConfig();
 const baseUrl = "http://178.83.168.50:5000/api";
-const infoSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('info')));
+const tokenSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('info')));
 const memberSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('member')));
 
 export const userService = {
-    info: infoSubject.asObservable(),
+    token: tokenSubject.asObservable(),
     member: memberSubject.asObservable(),
-    get infoValue() {
-        return infoSubject.value
+    get tokenValue() {
+        return tokenSubject.value
     },
     get memberValue() {
         return memberSubject.value
@@ -21,7 +21,8 @@ export const userService = {
     setActiveMember,
     login,
     logout,
-    updateUser
+    updateUser,
+    updateSelfInfo
 };
 
 function setActiveMember(member) {
@@ -35,35 +36,44 @@ function login(name, password) {
         .then(info => {
 
             // publish user to subscribers and store in local storage to stay logged in between page refreshes
-            infoSubject.next(info);
-            localStorage.setItem('info', JSON.stringify(info));
+            tokenSubject.next(info.token);
+            localStorage.setItem('token', info.token);
 
-            console.log(JSON.stringify(info))
-            return info;
+            console.log(info.token)
+            return info.token;
         });
 }
 
-function updateUser(member, dietaryRestrictions, attendanceStatus, dietaryInfo, songRequest) {
+function updateSelfInfo() {
+    return fetchWrapper.get(`${baseUrl}/groups`).then((response) => {
+        //localStorage.setItem('info', JSON.stringify(response));
+        return response
+    })
+}
+
+function updateUser(member, dietaryRestrictions, attendanceStatus, dietaryInfo, songRequest, brunch, camping) {
     const content = {
         user_id: member._id,
         registerationStatus: "Registered",
         dietaryRestrictions,
         attendanceStatus,
         dietaryInfo,
-        songRequest
+        songRequest,
+        brunch,
+        camping
     }
-    return fetchWrapper.post(`${baseUrl}/users/edit`, content);
+    return fetchWrapper.put(`${baseUrl}/users`, content);
 
 }
 
 function logout() {
     // remove user from local storage, publish null to user subscribers and redirect to login page
     if (typeof window !== 'undefined') {
-        localStorage.removeItem('info')
-        infoSubject.next(null)
+        localStorage.removeItem('token')
+        tokenSubject.next(null)
         localStorage.removeItem('member')
         memberSubject.next(null)
-        console.log("local storage cleared - " + userService.infoValue + " - " + userService.memberValue)
+        console.log("local storage cleared - " + userService.tokenValue + " - " + userService.memberValue)
     }
     return null
 }

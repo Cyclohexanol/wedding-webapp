@@ -11,6 +11,7 @@ import { Footer } from '../../../components/Footer'
 import { RegisterForm } from '../../../components/RegisterForm'
 
 import { userService } from '../../../services/user.service';
+import { useEffect, useState } from 'react'
 
 
 
@@ -18,8 +19,17 @@ import { userService } from '../../../services/user.service';
 
 const Register = () => {
     const { t } = useTranslation(['common'])
+    // TODO fetch from localStorage
+    const [info, setInfo] = useState(undefined);
 
-   
+    useEffect(() => {
+        const fetchInfos = async () => {
+            const response = await userService.updateSelfInfo()
+            console.log(response.group)
+            return response.group;
+        }
+        fetchInfos().then(res => setInfo(res));
+    }, [])
 
     return (
         <>
@@ -30,7 +40,7 @@ const Register = () => {
                 </div>
                 <div className="container mx-auto">
                     <div className="m-4 grid grid-cols-1 gap-4">
-                        {userService.infoValue && userService.infoValue?.users.map((member) => (<RegisterForm key={member._id} member={member} />))}
+                        {info && info.users.map((member) => (<RegisterForm key={member._id} member={member} />))}
                         <Link
                             
                             href="/auth/home"
@@ -38,7 +48,7 @@ const Register = () => {
                                                                 shadow-md bg-green-900 hover:bg-stone-400 hover:shadow-lg focus:shadow-lg focus:outline-none 
                                                                 focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
                         >
-                            {t('confirm')}
+                            {t('continue')}
                         </Link>
                     </div>
                 </div>
