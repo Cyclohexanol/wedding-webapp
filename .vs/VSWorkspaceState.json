@@ -2,12 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\components",
-    "\\helpers",
     "\\pages",
     "\\pages\\auth",
     "\\pages\\[locale]",
-    "\\pages\\[locale]\\auth",
-    "\\services"
+    "\\pages\\[locale]\\auth"
   ],
+  "SelectedNode": "\\components\\CartBanner.js",
   "PreviewInSolutionExplorer": false
 }

@@ -66,7 +66,6 @@ const WishItem = ({ wish, addToCart }) => {
                     <p className="italic">Price: {wish.price}</p>
                 </div>
             </div>
-            <img src={wish.pictureUrl} alt={wish.title} className="max-h-32 h-auto w-full object-contain mt-2" />
             <form onSubmit={formik.handleSubmit} className="mt-2">
                 {formik.touched.quantity && formik.errors.quantity ? <div className="text-red-500">{formik.errors.quantity}</div> : null}
                 {quantity > 0 && (
