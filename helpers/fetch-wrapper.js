@@ -1,6 +1,6 @@
 import getConfig from 'next/config';
 
-import { userService } from '../services/user.service';
+import { userService, baseUrl } from '../services/user.service';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -52,8 +52,9 @@ function authHeader(url) {
     // return auth header with jwt if user is logged in and request is to the api url
     const token = userService.tokenValue;
     const isLoggedIn = token;
-    // TODO: never -> const isApiUrl = url.startsWith(publicRuntimeConfig.apiUrl);
-    if (isLoggedIn) {
+    // TODO: unified config, baseUrl should not be exported from user.service
+    const isApiUrl = url.startsWith(baseUrl);
+    if (isApiUrl && isLoggedIn) {
         return { authorization: `${token}` };
     } else {
         return { };

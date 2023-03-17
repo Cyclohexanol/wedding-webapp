@@ -1,12 +1,12 @@
 import { BehaviorSubject } from 'rxjs';
-import getConfig from 'next/config';
-import { useRouter } from 'next/router'
+// import getConfig from 'next/config';
+// import { useRouter } from 'next/router'
 
 import { fetchWrapper } from '../helpers/fetch-wrapper';
 
-const { publicRuntimeConfig } = getConfig();
-const baseUrl = "http://178.83.168.50:5000/api";
-const tokenSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('info')));
+// const { publicRuntimeConfig } = getConfig();
+export const baseUrl = "http://178.83.168.50:5000/api";
+const tokenSubject = new BehaviorSubject(process.browser && localStorage.getItem('token'));
 const memberSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('member')));
 
 export const userService = {
@@ -27,9 +27,7 @@ export const userService = {
 };
 
 function setActiveMember(member) {
-
     localStorage.setItem('member', JSON.stringify(member));
-    console.log("User selected: " + JSON.stringify(member));
 }
 
 function login(name, password) {
@@ -39,15 +37,17 @@ function login(name, password) {
             // publish user to subscribers and store in local storage to stay logged in between page refreshes
             tokenSubject.next(info.token);
             localStorage.setItem('token', info.token);
-
-            console.log(info.token)
             return info.token;
         });
 }
 
 function updateSelfInfo() {
     return fetchWrapper.get(`${baseUrl}/groups`).then((response) => {
-        //localStorage.setItem('info', JSON.stringify(response));
+        response.group.users.forEach((user) => {
+            if (userService.memberValue && user._id === userService.memberValue._id) {
+                setActiveMember(user)
+            }
+        });
         return response
     })
 }

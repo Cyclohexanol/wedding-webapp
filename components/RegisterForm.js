@@ -12,8 +12,8 @@ export const RegisterForm = ({ member, ...rest }) => {
     const { t } = useTranslation('common')
 
     const [showForm, setShowForm] = useState(false)
-    const [brunch, setBrunch] = useState(false)
-    const [camping, setCamping] = useState(false)
+    const [brunch, setBrunch] = useState(member.brunch || false)
+    const [camping, setCamping] = useState(member.camping || false)
 
     // TODO: pass to props after useeffect of parent 
 
@@ -34,7 +34,6 @@ export const RegisterForm = ({ member, ...rest }) => {
             setCamping(member.camping || false);
         }
     }, [member, setValue]);
-
 
     function onSubmit(data) {
         return userService
@@ -91,7 +90,7 @@ export const RegisterForm = ({ member, ...rest }) => {
                         <div className="pt-4">
                             <label htmlFor="campOnSite" className="block mb-2 text-sm font-medium text-stone-900 ">{t('camp-on-site')}</label>
                             <label className="relative inline-flex items-center cursor-pointer">
-                                <input type="checkbox" value="" className="sr-only peer" onClick={() => setCamping(!camping)} />
+                                <input type="checkbox" checked={member.camping} className="sr-only peer" onClick={() => setCamping(!camping)} />
                                 <div className="w-11 h-6 bg-stone-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-700"></div>
                                 <div className="ml-3 text-stone-900">{camping ? t('yes') : t('no') }</div>
                             </label>
@@ -99,7 +98,7 @@ export const RegisterForm = ({ member, ...rest }) => {
                         <div className="pt-4">
                             <label htmlFor="brunchNextDay" className="block mb-2 text-sm font-medium text-stone-900 ">{t('brunch-next-day')}</label>
                             <label className="relative inline-flex items-center cursor-pointer">
-                                <input type="checkbox" value="" className="sr-only peer" onClick={() => setBrunch(!brunch)} />
+                                <input type="checkbox" checked={member.brunch} className="sr-only peer" onClick={() => setBrunch(!brunch)} />
                                 <div className="w-11 h-6 bg-stone-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-700"></div>
                                 <div className="ml-3 text-stone-900">{brunch ? t('yes') : t('no')}</div>
                             </label>
