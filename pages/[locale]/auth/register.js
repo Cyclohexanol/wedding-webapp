@@ -25,7 +25,6 @@ const Register = () => {
     useEffect(() => {
         const fetchInfos = async () => {
             const response = await userService.updateSelfInfo()
-            console.log(response.group)
             return response.group;
         }
         fetchInfos().then(res => setInfo(res));

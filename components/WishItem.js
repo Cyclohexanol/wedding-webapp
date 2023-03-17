@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-const WishItem = ({ wish, addToCart }) => {
+const WishItem = ({ wish, selectedWish, addToCart }) => {
     const { t } = useTranslation();
     const [quantity, setQuantity] = useState(0);
 
@@ -19,7 +19,7 @@ const WishItem = ({ wish, addToCart }) => {
         }),
         onSubmit: (values) => {
             addToCart({
-                id: wish.id,
+                _id: wish._id,
                 title: wish.title,
                 price: wish.price,
                 quantity: parseInt(values.quantity),
@@ -62,20 +62,29 @@ const WishItem = ({ wish, addToCart }) => {
                         />
                         <button type="button" onClick={increaseQuantity} className="bg-stone-600 text-white w-8 h-8 rounded">+</button>
                     </div>
-                    <p className="italic whitespace-nowrap">Quantity remaining: {wish.quantity}</p>
+                    <p className="italic whitespace-nowrap">Quantity remaining: { wish.quantity}</p>
+                    { selectedWish ? <p className="italic whitespace-nowrap">Quantity in cart: {selectedWish.quantity}</p> : null}
                     <p className="italic">Price: {wish.price}</p>
                 </div>
             </div>
             <form onSubmit={formik.handleSubmit} className="mt-2">
                 {formik.touched.quantity && formik.errors.quantity ? <div className="text-red-500">{formik.errors.quantity}</div> : null}
-                {quantity > 0 && (
+                {quantity > 0 ? (
+                    <>
                     <button
                         type="submit"
                         className="text-center inline-block my-4 px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md bg-green-900 hover:bg-stone-400 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
                     >
                         {t("add-to-cart")}
                     </button>
-                )}
+                    <button
+                    type="submit"
+                    className="text-center inline-block my-4 px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md bg-red-900 hover:bg-stone-400 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
+                    >
+                        {t("remove-from-cart")}
+                    </button>
+                    </>
+                ):null}
 
             </form>
         </div>

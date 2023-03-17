@@ -7,6 +7,7 @@ const CartBanner = ({ cart }) => {
     const handleCheckout = () => {
         // Handle checkout logic here
         console.log('Checking out');
+        console.log(cart)
     };
 
     return (

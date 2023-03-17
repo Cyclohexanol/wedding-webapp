@@ -20,7 +20,6 @@ const Home = () => {
     useEffect(() => {
         const fetchInfos = async () => {
             const response = await userService.updateSelfInfo()
-            console.log(response)
             return response.group;
         }
         fetchInfos().then(res => setInfo(res));

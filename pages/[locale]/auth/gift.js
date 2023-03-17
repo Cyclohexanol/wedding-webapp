@@ -1,5 +1,3 @@
-import Link from '../../../components/Link'
-
 import { useTranslation } from 'next-i18next'
 import {
     getStaticPaths,
@@ -18,6 +16,7 @@ const Gift = () => {
     const { t } = useTranslation(['common'])
 
     const [wishes, setWishes] = useState([]); // Added state for wishes
+    const [cart, setCart] = useState([]);
 
     // Added useEffect to fetch wishes on page load
     useEffect(() => {
@@ -28,19 +27,31 @@ const Gift = () => {
             .catch(error => {
                 console.error('Error fetching wishes:', error);
             });
+        userService.getCart()
+            .then(fetchedCart => {
+                console.log(fetchedCart)
+                setCart(fetchedCart)
+            }).catch(error => {
+                console.error('Error fetching cart:', error);
+            });
     }, []);
 
-    const [cart, setCart] = useState([]);
 
     const addToCart = (item) => {
         setCart((prevCart) => {
-            const existingItemIndex = prevCart.findIndex((cartItem) => cartItem.id === item.id);
-
+            const existingItemIndex = prevCart.findIndex((cartItem) => cartItem._id === item._id);
             if (existingItemIndex > -1) {
                 const newCart = [...prevCart];
-                newCart[existingItemIndex].quantity += item.quantity;
+                if (item.quantity == 0) {
+                    newCart.splice(existingItemIndex, 1);
+                    userService.removeFromCart(item)
+                    return newCart;
+                }
+                userService.addToCart(item)
+                newCart[existingItemIndex].quantity = item.quantity;
                 return newCart;
             } else {
+                userService.addToCart(item)
                 return [...prevCart, item];
             }
         });
@@ -55,7 +66,9 @@ const Gift = () => {
                 </div>
                 <div className="m-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                     {wishes.map((wish, index) => (
-                        <WishItem key={index} wish={wish} addToCart={addToCart} />
+                        <WishItem key={index} wish={wish} selectedWish={
+                            cart.find((cartItem) => cartItem._id === wish._id)
+                        } addToCart={addToCart} />
                     ))}
                 </div>
                 {cart.length > 0 && <CartBanner cart={cart} />}

@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { fetchWrapper } from '../helpers/fetch-wrapper';
 
 // const { publicRuntimeConfig } = getConfig();
-export const baseUrl = "http://178.83.168.50:5000/api";
+export const baseUrl = "http://localhost:5000/api";
 const tokenSubject = new BehaviorSubject(process.browser && localStorage.getItem('token'));
 const memberSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('member')));
 
@@ -23,7 +23,10 @@ export const userService = {
     logout,
     updateUser,
     updateSelfInfo,
-    getAllWishes
+    getAllWishes,
+    getCart,
+    addToCart,
+    removeFromCart,
 };
 
 function setActiveMember(member) {
@@ -79,7 +82,38 @@ function logout() {
     return null
 }
 
+function getCart() {
+    return fetchWrapper.get(`${baseUrl}/groups`)
+        .then(response => {
+            return response.group.cart
+        });
+}
+
 function getAllWishes() {
     return fetchWrapper.get(`${baseUrl}/wishlist`)
+        .then(response => response);
+}
+
+function addToCart(wish) {
+    return fetchWrapper.put(
+        `${baseUrl}/wishlist`,
+        {
+            wish_id: wish._id,
+            is_purchasing: true,
+            quantity: wish.quantity,
+        }
+        )
+        .then(response => response);
+}
+
+function removeFromCart(wish) {
+    return fetchWrapper.put(
+        `${baseUrl}/wishlist`,
+        {
+            wish_id: wish._id,
+            is_purchasing: false,
+            quantity: wish.quantity,
+        }
+        )
         .then(response => response);
 }
