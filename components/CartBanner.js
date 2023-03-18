@@ -1,13 +1,15 @@
 import React from 'react';
+import { useRouter } from 'next/router'
 
 const CartBanner = ({ cart }) => {
     const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
     const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    const router = useRouter();
 
     const handleCheckout = () => {
         // Handle checkout logic here
-        console.log('Checking out');
-        console.log(cart)
+        localStorage.setItem('cart', JSON.stringify(cart));
+        router.push('/auth/cash');
     };
 
     return (
