@@ -21,7 +21,7 @@
     "register": "Register",
     "wish-list": "Wish List",
     "useful-info": "Useful Info",
-    "quizz": "Quizz",
+    "quizz": "Quiz",
     "baby-pic-collector": "S&A Pic Collector",
     "table-seating": "Seating Arrangement",
     "who-are-you": "Who are you?",
@@ -120,5 +120,13 @@
                 "camping": "For the more adventurous, there will also be the option to camp in the garden."
             }
         }
+    },
+    "unimplemented": {
+        "title": "Oops! We're Working on it!",
+        "message": "Looks like we haven't quite finished building this page yet. Please check back soon, we're working hard to get it up and running! In the meantime, enjoy the rest of the site and have a great day!",
+        "seat-message": "Sarah & Ambroise are currently scratching their heads to figure out the best seating arrangements for everyone. We appreciate your patience and will have it sorted out soon!",
+        "quiz-message": "Our wedding quiz will be available soon! Come back and test your knowledge of the bride and groom!",
+        "pic-collector-message": "We know everyone is eagerly waiting for the traditional slideshow, but we have something even better in store for you! Our Pic Collector will allow you to submit and share your own photos of the bride and groom. Keep an eye out for codes throughout the wedding that will give you access to exclusive photos. And if you have any photos you'd like to share with the rest of the guests, feel free to send them to Ambroise!"
     }
+
 }

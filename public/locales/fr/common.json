@@ -21,7 +21,7 @@
     "register": "RSVP",
     "wish-list": "Liste de Mariage",
     "useful-info": "Informations Pratiques",
-    "quizz": "Quizz",
+    "quizz": "Quiz",
     "baby-pic-collector": "S&A Pic Collector",
     "table-seating": "Plan de Table",
     "who-are-you": "Qui êtes-vous?",
@@ -120,6 +120,12 @@
                 "camping": "Pour les plus aventureux, il y aura également la possibilité de camper dans le jardin."
             }
         }
+    },
+    "unimplemented": {
+        "title": "Oups ! Nous y travaillons !",
+        "message": "Il semblerait que nous n'ayons pas encore terminé de construire cette page. Merci de revenir bientôt, nous travaillons dur pour la rendre disponible ! En attendant, profitez du reste du site et passez une excellente journée !",
+        "seat-message": "Sarah & Ambroise réfléchissent actuellement à la meilleure disposition de places pour tout le monde. Nous vous remercions de votre patience et nous allons bientôt régler cela !",
+        "quiz-message": "Notre quiz de mariage sera bientôt disponible ! Revenez et testez vos connaissances sur la mariée et le marié !",
+        "pic-collector-message": "Nous savons que tout le monde attend avec impatience le traditionnel diaporama, mais nous avons quelque chose de bien mieux pour vous ! Notre Pic Collector vous permettra de soumettre et de partager vos propres photos dossier de la mariée et du marié. Soyez attentif aux codes disséminés dans le mariage qui vous donneront accès à des photos exclusives. Et si vous avez des photos que vous souhaitez partager avec le reste des invités, n'hésitez pas à les envoyer à Ambroise !"
     }
-
 }

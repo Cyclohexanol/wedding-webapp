@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next';
 import { getStaticPaths, getI18nProps } from '../../../lib/getStatic';
 import { Header } from '../../../components/Header';
 import { Footer } from '../../../components/Footer';
+import { Unimplemented } from '../../../components/Unimplemented';
 
 const Quizz = () => {
     const { t } = useTranslation(['common']);
@@ -11,9 +12,7 @@ const Quizz = () => {
         <>
             <main>
                 <Header title={t('title')} />
-                <div className="m-4">
-                    <h1 className="text-2xl font-bold mb-4">Hello World Quizz</h1>
-                </div>
+                <Unimplemented message={t('unimplemented.quiz-message')} />
             </main>
 
             <Footer />
