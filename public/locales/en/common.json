@@ -110,7 +110,8 @@
                 "car": "Car",
                 "tain": "Train",
                 "by-car": "Parking organized on site",
-                "by-train": "The house is 3 minutes away from 'Vevey Vigneron' station, the train arrives at 3:14 PM"
+                "by-train": "The house is 3 minutes away from 'Vevey Vigneron' station, the train arrives at 3:14 PM",
+                "map": "Open in Google Maps"
             },
             "accommodation": {
                 "title": "Accommodation Options",

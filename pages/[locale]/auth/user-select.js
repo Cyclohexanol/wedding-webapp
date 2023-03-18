@@ -38,7 +38,7 @@ const Home = () => {
                     <div className="m-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
                         {info && info.users.map( (member) => (
                                 <Link
-                                href={member.registered ? "/auth/home" : "/auth/register"}
+                                href={member.registrationStatus == "Registered" ? "/auth/home" : "/auth/register"}
                                 className="border border-green-900 hover:bg-stone-200 font-semibold 
                                         text-black py-2 px-4 rounded"
                                 key={member._id}

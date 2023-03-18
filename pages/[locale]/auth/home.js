@@ -1,10 +1,11 @@
-import Link from '../../../components/Link'
-
 import { useTranslation } from 'next-i18next'
 import {
     getStaticPaths /*, makeStaticProps*/,
     getI18nProps,
 } from '../../../lib/getStatic'
+
+import { useEffect, useState } from "react";
+import { userService } from "../../../services/user.service";
 
 import { Header } from '../../../components/Header'
 import { Footer } from '../../../components/Footer'
@@ -18,7 +19,21 @@ import BabyPicSVG from "../../../public/images/camera-green.svg";
 import ChairSVG from "../../../public/images/chair-green.svg";
 
 const Home = () => {
-    const { t } = useTranslation(['common'])
+    const { t } = useTranslation(["common"]);
+
+    const [unregisteredMembers, setUnregisteredMembers] = useState(0);
+
+    useEffect(() => {
+        const fetchUnregisteredMembers = async () => {
+            const response = await userService.updateSelfInfo();
+            console.log(response);
+            const unregisteredCount = response.group.users.filter(
+                (member) => member.registrationStatus !== "Registered"
+            ).length;
+            setUnregisteredMembers(unregisteredCount);
+        };
+        fetchUnregisteredMembers();
+    }, []);
 
     return (
         <>
@@ -26,7 +41,10 @@ const Home = () => {
                 <Header title={t('title')} />
                 <div className="container mx-auto">
                     <div className="m-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-                        <MenuIcon linkref="/auth/register">
+                        <MenuIcon
+                            linkref="/auth/register"
+                            notification={unregisteredMembers > 0 ? unregisteredMembers : null}
+                        >
                             <RegisterSVG className="w-12 h-12 m-2 hover:stroke-white" />
                             <p>{t('register')}</p>
                         </MenuIcon>

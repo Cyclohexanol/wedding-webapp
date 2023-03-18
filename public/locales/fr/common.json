@@ -110,7 +110,8 @@
                 "car": "Voiture",
                 "tain": "Train",
                 "by-car": "Parking organisé sur place",
-                "by-train": "La maison est à 3 minutes de la gare 'Vevey Vigneron', le train arrive à 15h14"
+                "by-train": "La maison est à 3 minutes de la gare 'Vevey Vigneron', le train arrive à 15h14",
+                "map": "Ouvrir sur Google Maps"
             },
             "accommodation": {
                 "title": "Options d'hébergement",
