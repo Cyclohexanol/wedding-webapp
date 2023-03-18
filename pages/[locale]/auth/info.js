@@ -37,7 +37,7 @@ const Info = () => {
                                     <p className="text-lg">{t('info.wedding.details.location')}</p>
                                     <p className="text-lg">
                                         <a
-                                            href="https://www.google.com/maps/search/Sentiers+des+Ruerettes+39,+1800+Vevey/@46.4672528,6.8510591,18z"
+                                            href="https://www.google.com/maps/place/Sent.+des+Ruerettes+39,+1800+Vevey/"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-blue-500 hover:underline"

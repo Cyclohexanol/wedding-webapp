@@ -68,9 +68,9 @@ const WishItem = ({ wish, selectedWish, updateCart }) => {
                         />
                         <button type="button" onClick={increaseQuantity} className="bg-stone-600 text-white w-8 h-8 rounded">+</button>
                     </div>
-                    <p className="italic whitespace-nowrap">Quantity remaining: { wish.quantity}</p>
+                    <p className="italic whitespace-nowrap">{t("remaining-quantity") }: { wish.quantity}</p>
                     { selectedWish ? <p className="italic whitespace-nowrap">Quantity in cart: {selectedWish.quantity}</p> : null}
-                    <p className="italic">Price: {wish.price}</p>
+                    <p className="italic">{t("price")}: {wish.price}</p>
                 </div>
             </div>
             <form onSubmit={formik.handleSubmit} className="mt-2">
