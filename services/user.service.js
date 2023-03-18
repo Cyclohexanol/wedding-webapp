@@ -36,13 +36,16 @@ function setActiveMember(member) {
 function login(name, password) {
     return fetchWrapper.post(`${baseUrl}/groups/login`, { name, password })
         .then(info => {
-
             // publish user to subscribers and store in local storage to stay logged in between page refreshes
             tokenSubject.next(info.token);
             localStorage.setItem('token', info.token);
             return info.token;
+        })
+        .catch(error => {
+            throw error;
         });
 }
+
 
 function updateSelfInfo() {
     return fetchWrapper.get(`${baseUrl}/groups`).then((response) => {

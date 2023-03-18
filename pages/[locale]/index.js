@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { getStaticPaths, makeStaticProps } from '../../lib/getStatic'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import i18nextConfig from '../../next-i18next.config'
 // import Link from '../../components/Link'
 import Head from 'next/head'
@@ -32,6 +32,8 @@ const Homepage = () => {
     const { register, handleSubmit, formState } = useForm(formOptions);
     const { errors } = formState;
 
+    const [errorMessage, setErrorMessage] = useState(null);
+
     useEffect(() => {
         const info = localStorage.getItem("info");
         const member = localStorage.getItem("member");
@@ -50,11 +52,15 @@ const Homepage = () => {
                 const returnUrl = router.query.returnUrl || '/auth/user-select';
                 router.push(returnUrl);
             })
-            .catch(alertService.error);
+            .catch((error) => {
+                const message = error?.response?.data?.message || 'Invalid credentials';
+                alertService.error(message);
+                setErrorMessage(message);
+            });
     }
 
   return (
-    <>
+      <>
           <main>
               <Head>
                   <title>{t('title')}</title>
@@ -89,9 +95,10 @@ const Homepage = () => {
                                                           id="name"
                                                           {...register('name')}
                                                             placeholder={t('username')}
-                                                        />
-                                                      </div>
+                                                      />
                                                       <div className="invalid-feedback">{errors.name?.message}</div>
+                                                      </div>
+                                                      
                                                     <div className="mb-4">
                                                         <input
                                                             type="password"
@@ -99,9 +106,15 @@ const Homepage = () => {
                                                           id="password"
                                                           {...register('password')}
                                                             placeholder={t('password')}
-                                                        />
+                                                      />
+                                                      <div className="invalid-feedback">{errors.password?.message}</div>
                                                   </div>
-                                                  <div className="invalid-feedback">{errors.password?.message}</div>
+
+                                                  {errorMessage && (
+                                                      <div className="mb-4 text-red-600 text-sm">
+                                                          {errorMessage}
+                                                      </div>
+                                                  )}
                                                     <div className="text-center pt-1 mb-12 pb-1">
                                                             <button
                                                                 className="inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded 
