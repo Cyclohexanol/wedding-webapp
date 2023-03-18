@@ -1,11 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\components",
     "\\pages",
     "\\pages\\auth",
     "\\pages\\[locale]",
-    "\\pages\\[locale]\\auth"
+    "\\pages\\[locale]\\auth",
+    "\\public",
+    "\\public\\locales",
+    "\\public\\locales\\en",
+    "\\public\\locales\\fr",
+    "\\services"
   ],
+  "SelectedNode": "\\pages\\[locale]\\auth\\info.js",
   "PreviewInSolutionExplorer": false
 }
