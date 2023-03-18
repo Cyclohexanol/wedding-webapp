@@ -12,16 +12,24 @@ import HomeSVG from "../public/images/home.svg";
 import { userService } from '../services/user.service';
 
 export const Header = ({ title }) => {
-    
+
     const { t } = useTranslation('common')
     const router = useRouter()
 
-
     const [memberData, setMemberData] = useState()
+    const [showLogoutModal, setShowLogoutModal] = useState(false)
 
     useEffect(() => {
         setMemberData(userService.memberValue);
     }, []);
+
+    const handleShowLogoutModal = () => {
+        setShowLogoutModal(true);
+    }
+
+    const handleCloseLogoutModal = () => {
+        setShowLogoutModal(false);
+    }
 
     const logout = () => {
         userService.logout()
@@ -39,19 +47,24 @@ export const Header = ({ title }) => {
                 <Link href="/auth/home">
                     <button
                         className="bg-transparent h-30 hover:bg-stone-400 text-stone-600 font-semibold hover:text-white py-2 px-4 border border-stone-600 hover:border-transparent rounded"
-                >
+                    >
                         <HomeSVG className="hover:stroke-white w-7 h-7" />
                     </button>
                 </Link>
                 <p>{memberData && memberData?.firstName}</p>
                 <button
-                    onClick={() => logout()}
+                    onClick={handleShowLogoutModal}
                     className="bg-transparent h-35 hover:bg-stone-400 text-stone-600 font-semibold hover:text-white py-2 px-4 border border-stone-600 hover:border-transparent rounded"
                 >
                     <LogoutSVG className="hover:stroke-white w-6 h-6" />
                 </button>
-                
+
             </div>
+            <LogoutModal
+                show={showLogoutModal}
+                onClose={handleCloseLogoutModal}
+                onConfirmLogout={logout}
+            />
         </>
     )
 }

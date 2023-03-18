@@ -45,7 +45,7 @@ export const RegisterForm = ({ member, ...rest }) => {
     }
 
     return (
-        <div className="bg-stone-100 border border-green-900 hover:bg-stone-200 font-semibold text-block py-2 px-4 rounded flex flex-col">
+        <div className="border border-green-900 bg-stone-100 font-semibold text-block py-2 px-4 rounded flex flex-col">
             <div className="flex justify-between">
                 <div className="flex flex-col">
                     <p>{member.firstName} {member.lastName}</p>

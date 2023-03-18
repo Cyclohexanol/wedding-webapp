@@ -16,6 +16,8 @@
     "copyright-text-2": "All rights reserved.",
     "dev-by": "Developed by Ambroise",
     "logout": "Logout",
+    "logout-question-confirmation": "Are you sure you want to logout?",
+    "cancel": "Cancel",
     "register": "Register",
     "wish-list": "Wish List",
     "useful-info": "Useful Info",
