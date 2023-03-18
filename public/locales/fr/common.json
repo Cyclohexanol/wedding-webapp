@@ -96,8 +96,7 @@
     "wl-local-restaurant-description": "On aime beaucoup manger",
     "wl-cocktail-description": "On aime boire aussi",
     "wl-excursion-description": "Mer, terre ou dans les airs ...",
-    "add-to-cart": "Ajouter au panier",
-    "remove-from-cart": "Retirer au panier",
+    "update-cart": "Mettre à jour",
     "info": {
         "wedding": {
             "title": "Notre Mariage",

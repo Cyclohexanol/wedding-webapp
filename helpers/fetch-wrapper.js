@@ -8,6 +8,7 @@ export const fetchWrapper = {
     get,
     post,
     put,
+    patch,
     delete: _delete
 };
 
@@ -31,6 +32,15 @@ function post(url, body) {
 function put(url, body) {
     const requestOptions = {
         method: 'PUT',
+        headers: { 'Content-Type': 'application/json', ...authHeader(url) },
+        body: JSON.stringify(body)
+    };
+    return fetch(url, requestOptions).then(handleResponse);
+}
+
+function patch(url, body) {
+    const requestOptions = {
+        method: 'PATCH',
         headers: { 'Content-Type': 'application/json', ...authHeader(url) },
         body: JSON.stringify(body)
     };

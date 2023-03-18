@@ -3,22 +3,27 @@ import { useTranslation } from 'next-i18next';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-const WishItem = ({ wish, selectedWish, addToCart }) => {
+const WishItem = ({ wish, selectedWish, updateCart }) => {
     const { t } = useTranslation();
     const [quantity, setQuantity] = useState(0);
 
+    useEffect(() => {
+        formik.setFieldValue('quantity', selectedWish ? selectedWish.quantity : 0);
+        selectedWish ? setQuantity(selectedWish.quantity) : null;
+    }, [selectedWish])
+
     const formik = useFormik({
         initialValues: {
-            quantity: 0
+            quantity: 0,
         },
         validationSchema: Yup.object({
             quantity: Yup.number()
                 .min(0, 'Quantity must be at least 0')
-                .max(wish.quantity, 'Quantity must not be more than available quantity')
+                // .max(wish.quantity, 'Quantity must not be more than available quantity')
                 .required('Quantity is required')
         }),
         onSubmit: (values) => {
-            addToCart({
+            updateCart({
                 _id: wish._id,
                 title: wish.title,
                 price: wish.price,
@@ -29,7 +34,7 @@ const WishItem = ({ wish, selectedWish, addToCart }) => {
     });
 
     const increaseQuantity = () => {
-        if (quantity < wish.quantity) {
+        if (selectedWish ? quantity < wish.quantity + selectedWish.quantity : quantity < wish.quantity) {
             setQuantity(quantity + 1);
             formik.setFieldValue('quantity', quantity + 1);
         }
@@ -58,6 +63,7 @@ const WishItem = ({ wish, selectedWish, addToCart }) => {
                             type="number"
                             min="0"
                             max={wish.quantity}
+                            onKeyDown={(e) => e.preventDefault()}
                             {...formik.getFieldProps('quantity')}
                         />
                         <button type="button" onClick={increaseQuantity} className="bg-stone-600 text-white w-8 h-8 rounded">+</button>
@@ -69,19 +75,13 @@ const WishItem = ({ wish, selectedWish, addToCart }) => {
             </div>
             <form onSubmit={formik.handleSubmit} className="mt-2">
                 {formik.touched.quantity && formik.errors.quantity ? <div className="text-red-500">{formik.errors.quantity}</div> : null}
-                {quantity > 0 ? (
+                {((selectedWish) ? selectedWish.quantity != quantity : quantity > 0) ? (
                     <>
                     <button
                         type="submit"
                         className="text-center inline-block my-4 px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md bg-green-900 hover:bg-stone-400 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
                     >
-                        {t("add-to-cart")}
-                    </button>
-                    <button
-                    type="submit"
-                    className="text-center inline-block my-4 px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md bg-red-900 hover:bg-stone-400 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
-                    >
-                        {t("remove-from-cart")}
+                        {t("update-cart")}
                     </button>
                     </>
                 ):null}

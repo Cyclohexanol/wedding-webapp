@@ -98,7 +98,7 @@ function getAllWishes() {
 }
 
 function addToCart(wish) {
-    return fetchWrapper.put(
+    return fetchWrapper.patch(
         `${baseUrl}/wishlist`,
         {
             wish_id: wish._id,
@@ -110,7 +110,7 @@ function addToCart(wish) {
 }
 
 function removeFromCart(wish) {
-    return fetchWrapper.put(
+    return fetchWrapper.patch(
         `${baseUrl}/wishlist`,
         {
             wish_id: wish._id,

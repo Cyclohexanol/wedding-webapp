@@ -29,7 +29,6 @@ const Gift = () => {
             });
         userService.getCart()
             .then(fetchedCart => {
-                console.log(fetchedCart)
                 setCart(fetchedCart)
             }).catch(error => {
                 console.error('Error fetching cart:', error);
@@ -37,9 +36,10 @@ const Gift = () => {
     }, []);
 
 
-    const addToCart = (item) => {
+    const updateCart = (item) => {
         setCart((prevCart) => {
             const existingItemIndex = prevCart.findIndex((cartItem) => cartItem._id === item._id);
+            // Already in cart
             if (existingItemIndex > -1) {
                 const newCart = [...prevCart];
                 if (item.quantity == 0) {
@@ -50,11 +50,19 @@ const Gift = () => {
                 userService.addToCart(item)
                 newCart[existingItemIndex].quantity = item.quantity;
                 return newCart;
-            } else {
+            } else { // New item in cart
                 userService.addToCart(item)
                 return [...prevCart, item];
             }
         });
+        // Update quantity remaining
+        userService.getAllWishes()
+            .then(fetchedWishes => {
+                setWishes(fetchedWishes.wishes);
+            })
+            .catch(error => {
+                console.error('Error fetching wishes:', error);
+            });
     };
 
     return (
@@ -68,7 +76,7 @@ const Gift = () => {
                     {wishes.map((wish, index) => (
                         <WishItem key={index} wish={wish} selectedWish={
                             cart.find((cartItem) => cartItem._id === wish._id)
-                        } addToCart={addToCart} />
+                        } updateCart={updateCart} />
                     ))}
                 </div>
                 {cart.length > 0 && <CartBanner cart={cart} />}
