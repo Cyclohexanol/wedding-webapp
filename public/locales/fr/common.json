@@ -17,6 +17,7 @@
     "dev-by": "Développé par Ambroise",
     "logout": "Se déconnecter",
     "logout-question-confirmation": "Êtes-vous sur de vouloir vous déconnecter?",
+    "cancel": "Annuler",
     "register": "RSVP",
     "wish-list": "Liste de Mariage",
     "useful-info": "Informations Pratiques",
@@ -95,5 +96,30 @@
     "wl-local-restaurant-description": "On aime beaucoup manger",
     "wl-cocktail-description": "On aime boire aussi",
     "wl-excursion-description": "Mer, terre ou dans les airs ...",
-    "add-to-cart": "Ajouter au panier"
+    "add-to-cart": "Ajouter au panier",
+    "info": {
+        "wedding": {
+            "title": "Notre Mariage",
+            "details": {
+                "title": "Informations principales",
+                "when": "Quand",
+                "date": "Le 1er juillet 2023. La cérémonie débutera à 16 heures.",
+                "where": "Où",
+                "location": "Sentiers des Ruerettes 39, 1800 Vevey",
+                "transport": "Moyens de transport",
+                "car": "Voiture",
+                "tain": "Train",
+                "by-car": "Parking organisé sur place",
+                "by-train": "La maison est à 3 minutes de la gare 'Vevey Vigneron', le train arrive à 15h14"
+            },
+            "accommodation": {
+                "title": "Options d'hébergement",
+                "description": "Nous recommandons 2 hôtels à proximité de la maison:",
+                "hotel1": "Modern Times Hotel",
+                "hotel2": "Vision Apartment Hotel",
+                "camping": "Pour les plus aventureux, il y aura également la possibilité de camper dans le jardin."
+            }
+        }
+    }
+
 }

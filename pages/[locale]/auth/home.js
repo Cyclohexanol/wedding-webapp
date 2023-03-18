@@ -38,15 +38,15 @@ const Home = () => {
                             <InformationSVG className="w-12 h-12 m-2 hover:stroke-white" />
                             <p>{t('useful-info')}</p>
                         </MenuIcon>
-                        <MenuIcon linkref="/auth/info">
+                        <MenuIcon linkref="/auth/quizz">
                             <QuizzSVG className="w-12 h-12 m-2 hover:stroke-white" />
                             <p>{t('quizz')}</p>
                         </MenuIcon>
-                        <MenuIcon linkref="/auth/info">
+                        <MenuIcon linkref="/auth/pic-collector">
                             <BabyPicSVG className="w-12 h-12 m-2 hover:stroke-white" />
                             <p>{t('baby-pic-collector')}</p>
                         </MenuIcon>
-                        <MenuIcon linkref="/auth/info">
+                        <MenuIcon linkref="/auth/seating">
                             <ChairSVG className="w-12 h-12 m-2 hover:stroke-white" />
                             <p>{t('table-seating')}</p>
                         </MenuIcon>

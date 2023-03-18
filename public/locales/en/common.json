@@ -25,8 +25,8 @@
     "baby-pic-collector": "S&A Pic Collector",
     "table-seating": "Seating Arrangement",
     "who-are-you": "Who are you?",
-    "registerd": "Registered",
-    "not-registerd": "Not registered",
+    "registered": "Registered",
+    "not-registered": "Not registered",
     "participate": "I will be there",
     "not-participate": "I cannot make it",
     "unkown": "I don't know yet",
@@ -96,5 +96,29 @@
     "wl-local-restaurant-description": "We really love to eat",
     "wl-cocktail-description": "We love to drink too",
     "wl-excursion-description": "Sea, land, or air...",
-    "add-to-cart": "Add to cart"
+    "add-to-cart": "Add to cart",
+    "info": {
+        "wedding": {
+            "title": "Our Wedding",
+            "details": {
+                "title": "Main Information",
+                "when": "When",
+                "date": "July 1st, 2023. The ceremony will start at 4 p.m.",
+                "where": "Where",
+                "location": "Sentiers des Ruerettes 39, 1800 Vevey",
+                "transport": "Transport methods",
+                "car": "Car",
+                "tain": "Train",
+                "by-car": "Parking organized on site",
+                "by-train": "The house is 3 minutes away from 'Vevey Vigneron' station, the train arrives at 3:14 PM"
+            },
+            "accommodation": {
+                "title": "Accommodation Options",
+                "description": "We recommend 2 hotels not too far away to walk from the house:",
+                "hotel1": "Modern Times Hotel",
+                "hotel2": "Vision Apartment Hotel",
+                "camping": "For the more adventurous, there will also be the option to camp in the garden."
+            }
+        }
+    }
 }
