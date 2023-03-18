@@ -11,20 +11,28 @@ import CartBanner from '../../../components/CartBanner';
 
 import { useState, useEffect } from "react";
 import { userService } from '../../../services/user.service'; // Import userService
+import { useRouter } from 'next/router';
 
 const Gift = () => {
     const { t } = useTranslation(['common'])
+
+    const router = useRouter();
 
     const [wishes, setWishes] = useState([]); // Added state for wishes
     const [cart, setCart] = useState([]);
 
     // Added useEffect to fetch wishes on page load
     useEffect(() => {
+        userService.updateSelfInfo()
+            .then(response => {
+                if(response.group.paid){
+                    router.push('/auth/cash')
+                }
+            });
         userService.getAllWishes()
             .then(fetchedWishes => {
                 setWishes(fetchedWishes.wishes);
-            })
-            .catch(error => {
+            }).catch(error => {
                 console.error('Error fetching wishes:', error);
             });
         userService.getCart()

@@ -8,8 +8,13 @@ import { Footer } from '../../../components/Footer'
 import WishItem from '../../../components/WishItem';
 import CartBanner from '../../../components/CartBanner';
 import { useEffect, useState } from "react";
+import { userService } from "../../../services/user.service";
+import { useRouter } from "next/router";
 
 const Cash = () => {
+    const { t } = useTranslation(['common'])
+
+    const router = useRouter()
 
     const [cart, setCart] = useState(undefined);
 
@@ -17,6 +22,11 @@ const Cash = () => {
         setCart(JSON.parse(localStorage.getItem('cart')))
         console.log(cart)
     }, [])
+
+    const handleEdit = () => {
+        userService.markPaid(false)
+        router.push('/auth/gift')
+    }
 
     return (
         <>
@@ -27,6 +37,7 @@ const Cash = () => {
                 </div>
             : null
             }
+            <button onClick={handleEdit}>{t('edit-cart')}</button>
             <Footer />
         </>
     )

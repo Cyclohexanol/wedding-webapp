@@ -27,6 +27,7 @@ export const userService = {
     getCart,
     addToCart,
     removeFromCart,
+    markPaid
 };
 
 function setActiveMember(member) {
@@ -116,6 +117,16 @@ function removeFromCart(wish) {
             wish_id: wish._id,
             is_purchasing: false,
             quantity: wish.quantity,
+        }
+        )
+        .then(response => response);
+}
+
+function markPaid(paid){
+    return fetchWrapper.patch(
+        `${baseUrl}/pay`,
+        {
+            paid
         }
         )
         .then(response => response);

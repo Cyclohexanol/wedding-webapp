@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router'
+import { userService } from '../services/user.service';
 
 const CartBanner = ({ cart }) => {
     const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
@@ -8,6 +9,7 @@ const CartBanner = ({ cart }) => {
 
     const handleCheckout = () => {
         // Handle checkout logic here
+        userService.markPaid(true)
         localStorage.setItem('cart', JSON.stringify(cart));
         router.push('/auth/cash');
     };
