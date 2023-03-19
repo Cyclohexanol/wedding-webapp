@@ -96,8 +96,9 @@ function addUser(firstName, lastName, groupId) {
     const content = {
         firstName,
         lastName,
-        group_id: groupId
+        group_id: +groupId
     }
+    console.log(content)
     return fetchWrapper.post(`${baseUrl}/users`, content);
 }
 

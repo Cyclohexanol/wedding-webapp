@@ -9,7 +9,7 @@ const AddUserModal = ({ groups, closeModal }) => {
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [groupId, setGroupId] = useState(-1);
+    const [groupId, setGroupId] = useState(groups[0]._id);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
