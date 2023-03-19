@@ -157,5 +157,7 @@
         "totalPrice": "Prix total",
         "validateOrder": "Valider la commande"
     },
-    "admin-panel": "Admin Panel"
+    "admin-panel": "Admin Panel",
+    "delete-user": "Supprimer l'utilisateur",
+    "delete-user-question-confirmation": "Êtes-vous sûr de vouloir supprimer l'utilisateur?"
 }

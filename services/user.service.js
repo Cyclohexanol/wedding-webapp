@@ -30,7 +30,8 @@ export const userService = {
     markPaid,
     getPaymentInfo,
     getAllGroups,
-    getAllUsers
+    getAllUsers,
+    deleteUser
 };
 
 function setActiveMember(member) {
@@ -150,4 +151,9 @@ function getAllGroups() {
 function getAllUsers() {
     return fetchWrapper.get(`${baseUrl}/users/getAll`)
         .then(response => response.users);
+}
+
+function deleteUser(userId) {
+    return fetchWrapper.delete(`${baseUrl}/users`)
+        .then(response => response);
 }

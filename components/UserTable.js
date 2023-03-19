@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import EditSVG from '../public/images/pencil-edit-button.svg';
+import XSVG from '../public/images/x-symbol.svg';
 import EditUserModal from './EditUserModal';
+import DeleteUserModal from './DeleteUserModal';
 
 export const UserTable = ({ users }) => {
     const [modalOpen, setModalOpen] = useState(false);
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
 
     const openModal = (user) => {
@@ -14,6 +17,16 @@ export const UserTable = ({ users }) => {
     const closeModal = () => {
         setSelectedUser(null);
         setModalOpen(false);
+    };
+
+    const openDeleteModal = (user) => {
+        setSelectedUser(user);
+        setDeleteModalOpen(true);
+    };
+
+    const closeDeleteModal = () => {
+        setSelectedUser(null);
+        setDeleteModalOpen(false);
     };
 
     return (
@@ -87,9 +100,17 @@ export const UserTable = ({ users }) => {
                                         onClick={() => {
                                             openModal(user);
                                         }}
-                                        className="focus:outline-none"
+                                        className="focus:outline-none mr-2"
                                     >
                                         <EditSVG className="w-5 h-5 text-gray-500 hover:text-gray-700" />
+                                    </button>
+                                    <button
+                                        onClick={() => {
+                                            openDeleteModal(user);
+                                        }}
+                                        className="focus:outline-none"
+                                    >
+                                        <XSVG className="w-5 h-5 text-red-500 hover:text-red-700" />
                                     </button>
                                 </td>
                             </tr>
@@ -98,6 +119,7 @@ export const UserTable = ({ users }) => {
                 </tbody>
             </table>
             {modalOpen && <EditUserModal user={selectedUser} closeModal={closeModal} />}
+            {deleteModalOpen && <DeleteUserModal closeModal={closeDeleteModal} user={selectedUser}/>}
 
         </>
     );
