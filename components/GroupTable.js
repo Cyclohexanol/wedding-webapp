@@ -33,17 +33,6 @@ export const GroupTable = ({ groups }) => {
     };
     return (
         <>
-            <div className="mb-4 flex">
-                <button
-                    className="text-center inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded 
-                                                                    shadow-md bg-green-900 hover:bg-stone-400 hover:shadow-lg focus:shadow-lg focus:outline-none 
-                                                                    focus:ring-0 active:shadow-lg transition duration-150 ease-in-out mb-3"
-                    onClick={openAddGroupModal}
-                >
-                    {t("add-group")}
-                </button>
-            </div>
-
             <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
                 <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
@@ -111,6 +100,17 @@ export const GroupTable = ({ groups }) => {
                         })}
                     </tbody>
                 </table>
+            </div>
+
+            <div className="my-4 flex">
+                <button
+                    className="text-center inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded 
+                                                                    shadow-md bg-green-900 hover:bg-stone-400 hover:shadow-lg focus:shadow-lg focus:outline-none 
+                                                                    focus:ring-0 active:shadow-lg transition duration-150 ease-in-out mb-3"
+                    onClick={openAddGroupModal}
+                >
+                    {t("add-group")}
+                </button>
             </div>
             
             {deleteModalOpen && <DeleteGroupModal closeModal={closeDeleteModal} group={selectedGroup} />}
