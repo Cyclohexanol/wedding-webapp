@@ -6,7 +6,7 @@
         "404": "cp out/404/index.html out/404.html",
         "dev": "next dev",
         "dev-css": "npx tailwindcss -i ./public/globals.css -o ./css/output.css --watch",
-        "build": "next build && next export",
+        "build": "next build",
         "postbuild": "npm run 404",
         "server": "next start",
         "start": "npm run dev",
