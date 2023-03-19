@@ -165,7 +165,7 @@
     "first-name": "Prénom",
     "last-name": "Nom",
     "add-group": "Ajouter un groupe",
-    "super-group" "Administrateur",
+    "super-group": "Administrateur",
     "group-name": "Nom du groupe",
     "add-user": "Ajouter un utilisateur",
     "group": "Groupe"
