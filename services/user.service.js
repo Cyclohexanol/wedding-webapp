@@ -154,6 +154,9 @@ function getAllUsers() {
 }
 
 function deleteUser(userId) {
-    return fetchWrapper.delete(`${baseUrl}/users`)
+    return fetchWrapper.delete(`${baseUrl}/users`,
+    {
+        user_id: userId
+    })
         .then(response => response);
 }
