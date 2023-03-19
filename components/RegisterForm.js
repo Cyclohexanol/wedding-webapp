@@ -80,12 +80,12 @@ export const RegisterForm = ({ member, onSave, isAdmin, ...rest }) => {
                         {isAdmin && (
                             <>
                                 <div className="pt-4">
-                                    <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-stone-900 ">First Name</label>
-                                    <input {...register("firstName")} type="text" id="firstName" className="bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-green-900 focus:border-green-900 block w-full p-2.5" placeholder={t('song-request-placeholder')} />
+                                    <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-stone-900 ">{t('first-name')}</label>
+                                    <input {...register("firstName")} type="text" id="firstName" className="bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-green-900 focus:border-green-900 block w-full p-2.5"/>
                                 </div>
                                 <div className="pt-4">
-                                    <label htmlFor="lastName" className="block mb-2 text-sm font-medium text-stone-900 ">Last Name</label>
-                                    <input {...register("lastName")} type="text" id="lastName" className="bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-green-900 focus:border-green-900 block w-full p-2.5" placeholder={t('song-request-placeholder')} />
+                                    <label htmlFor="lastName" className="block mb-2 text-sm font-medium text-stone-900 ">{t('last-name')}</label>
+                                    <input {...register("lastName")} type="text" id="lastName" className="bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-green-900 focus:border-green-900 block w-full p-2.5"/>
                                 </div>
                             </>
                             )}

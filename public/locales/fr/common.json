@@ -159,5 +159,14 @@
     },
     "admin-panel": "Admin Panel",
     "delete-user": "Supprimer l'utilisateur",
-    "delete-user-question-confirmation": "Êtes-vous sûr de vouloir supprimer l'utilisateur?"
+    "delete-user-question-confirmation": "Êtes-vous sûr de vouloir supprimer l'utilisateur?",
+    "delete-group": "Supprimer le groupe",
+    "delete-group-question-confirmation": "Êtes-vous sûr de vouloir supprimer le groupe?\nLes utilisateurs du group seront également supprimés:",
+    "first-name": "Prénom",
+    "last-name": "Nom",
+    "add-group": "Ajouter un groupe",
+    "super-group" "Administrateur",
+    "group-name": "Nom du groupe",
+    "add-user": "Ajouter un utilisateur",
+    "group": "Groupe"
 }

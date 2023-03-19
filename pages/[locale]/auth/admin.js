@@ -47,9 +47,15 @@ const AdminPanel = () => {
     const filteredUsers = users.filter(user => {
         const fullName = `${user.firstName} ${user.lastName}`;
         const userGroup = groups.find(group => {
-            return group._id === user.groupId
+            return group._id === user.groupId;
         });
         const groupName = userGroup ? userGroup.name.toLowerCase() : '';
+
+        const searchTermLowerCase = searchTerm.toLowerCase();
+
+        if (searchTermLowerCase === 'admin') {
+            return userGroup && userGroup.superGroup;
+        }
 
         if (searchTerm.toLowerCase() === 'registered') {
             return user.registrationStatus === 'Registered';
@@ -90,6 +96,10 @@ const AdminPanel = () => {
     const filteredGroups = groups.filter(group => {
         const searchTermLowerCase = searchTerm.toLowerCase();
         const groupNameLowerCase = group.name.toLowerCase();
+
+        if (searchTermLowerCase === 'admin') {
+            return group.superGroup;
+        }
 
         return groupNameLowerCase.includes(searchTermLowerCase) || group.users.some(user => {
             const fullName = `${user.firstName} ${user.lastName}`;
@@ -148,13 +158,12 @@ const AdminPanel = () => {
                         <div className="flex flex-col mt-6">
                             <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                                    <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
+                                    
                                         {activeTable === 'groups' ? (
                                             <GroupTable groups={filteredGroups} />
                                         ) : (
-                                            <UserTable users={filteredUsers} />
+                                            <UserTable users={filteredUsers} groups={groups} />
                                         )}
-                                    </div>
                                 </div>
                             </div>
                         </div>
