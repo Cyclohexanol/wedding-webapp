@@ -1950,6 +1950,10 @@ input[type='number']::-webkit-outer-spin-button,
     gap: 1.5rem;
   }
 
+  .md\:gap-4 {
+    gap: 1rem;
+  }
+
   .md\:rounded-lg {
     border-radius: 0.5rem;
   }
@@ -1997,6 +2001,10 @@ input[type='number']::-webkit-outer-spin-button,
 
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .lg\:flex-wrap {

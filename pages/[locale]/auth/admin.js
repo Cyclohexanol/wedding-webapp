@@ -8,7 +8,7 @@ import { userService } from '../../../services/user.service';
 import { KPICard } from '../../../components/KPICard';
 
 const AdminPanel = () => {
-    const [activeTable, setActiveTable] = useState('groups');
+    const [activeTable, setActiveTable] = useState('users');
     const [groups, setGroups] = useState([]);
     const [users, setUsers] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
@@ -111,19 +111,20 @@ const AdminPanel = () => {
             <main className="relative min-h-screen">
                 <div className="container mx-auto h-full">
                     <div className="m-4 text-center h-full">
-                        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 md:gap-6">
-                            <KPICard title="Registered Users" count={registeredUsers} onClick={() => handleKPICardClick('registered')} />
-                            <KPICard title="Attending Users" count={attendingUsers} onClick={() => handleKPICardClick('attending')} />
-                            <KPICard title="Brunch Users" count={brunchUsers} onClick={() => handleKPICardClick('brunch')} />
-                            <KPICard title="Camping Users" count={campingUsers} onClick={() => handleKPICardClick('camping')} />
+                        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5 md:gap-4">
+                            <KPICard title="Guests" count={users.length} onClick={() => handleKPICardClick('')} />
+                            <KPICard title="Registered" count={registeredUsers} onClick={() => handleKPICardClick('registered')} />
+                            <KPICard title="Attending" count={attendingUsers} onClick={() => handleKPICardClick('attending')} />
+                            <KPICard title="Brunch" count={brunchUsers} onClick={() => handleKPICardClick('brunch')} />
+                            <KPICard title="Camping" count={campingUsers} onClick={() => handleKPICardClick('camping')} />
                         </div>
                         <div className="mt-6 md:flex md:items-center md:justify-between">
                             <div className="inline-flex overflow-hidden bg-white border divide-x rounded-lg dark:bg-gray-900 rtl:flex-row-reverse dark:border-gray-700 dark:divide-gray-700">
-                                <button className={`px-5 py-2 text-xs font-medium ${activeTable === 'groups' ? 'text-gray-600 bg-gray-100' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'} transition-colors duration-200 sm:text-sm`} onClick={() => handleClick('groups')}>
-                                    Groups
-                                </button>
                                 <button className={`px-5 py-2 text-xs font-medium ${activeTable === 'users' ? 'text-gray-600 bg-gray-100' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'} transition-colors duration-200 sm:text-sm`} onClick={() => handleClick('users')}>
                                     Users
+                                </button>
+                                <button className={`px-5 py-2 text-xs font-medium ${activeTable === 'groups' ? 'text-gray-600 bg-gray-100' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'} transition-colors duration-200 sm:text-sm`} onClick={() => handleClick('groups')}>
+                                    Groups
                                 </button>
                             </div>
                             <div className="relative flex items-center mt-4 md:mt-0">
