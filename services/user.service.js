@@ -31,7 +31,10 @@ export const userService = {
     getPaymentInfo,
     getAllGroups,
     getAllUsers,
-    deleteUser
+    deleteUser,
+    deleteGroup,
+    addGroup,
+    addUser
 };
 
 function setActiveMember(member) {
@@ -78,6 +81,25 @@ function updateUser(member, dietaryRestrictions, registerationStatus, attendance
     }
     return fetchWrapper.put(`${baseUrl}/users`, content);
 
+}
+
+function addGroup(name, password, superGroup) {
+    const content = {
+        name,
+        password,
+        superGroup
+    }
+    return fetchWrapper.post(`${baseUrl}/groups`, content);
+}
+
+function addUser(firstName, lastName, groupId) {
+    const content = {
+        firstName,
+        lastName,
+        group_id: +groupId
+    }
+    console.log(content)
+    return fetchWrapper.post(`${baseUrl}/users`, content);
 }
 
 function logout() {
@@ -158,5 +180,13 @@ function deleteUser(userId) {
     {
         user_id: userId
     })
+        .then(response => response);
+}
+
+function deleteGroup(groupId) {
+    return fetchWrapper.delete(`${baseUrl}/groups`,
+        {
+            group_id: groupId
+        })
         .then(response => response);
 }
