@@ -46,13 +46,17 @@ const AdminPanel = () => {
 
     const filteredUsers = users.filter(user => {
         const fullName = `${user.firstName} ${user.lastName}`;
+        const userGroup = groups.find(group => {
+            return group._id === user.groupId
+        });
+        const groupName = userGroup ? userGroup.name.toLowerCase() : '';
 
         if (searchTerm.toLowerCase() === 'registered') {
             return user.registrationStatus === 'Registered';
         }
 
         if (searchTerm.toLowerCase() === 'attending') {
-            return user.attendanceStatus === "Attending";
+            return user.attendanceStatus === 'Attending';
         }
 
         if (searchTerm.toLowerCase() === 'brunch') {
@@ -75,8 +79,13 @@ const AdminPanel = () => {
             return user.dietaryRestrictions === 'None';
         }
 
-        return fullName.toLowerCase().includes(searchTerm.toLowerCase()) || (user.songRequest && user.songRequest.toLowerCase().includes(searchTerm.toLowerCase()));
+        return (
+            fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            (user.songRequest && user.songRequest.toLowerCase().includes(searchTerm.toLowerCase())) ||
+            groupName.includes(searchTerm.toLowerCase())
+        );
     });
+
 
     const filteredGroups = groups.filter(group => {
         const searchTermLowerCase = searchTerm.toLowerCase();
