@@ -49,34 +49,34 @@ export const UserTable = ({ users, groups }) => {
                 <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                         <tr>
-                            <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 First Name
                             </th>
-                            <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Last Name
                             </th>
-                            <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Registration Status
                             </th>
-                            <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Attendance Status
                             </th>
-                            <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Brunch
                             </th>
-                            <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Camping
                             </th>
-                            <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Diet
                             </th>
-                            <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Allergies
                             </th>
-                            <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Song Request
                             </th>
-                            <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Edit
                             </th>
                         </tr>
@@ -85,16 +85,16 @@ export const UserTable = ({ users, groups }) => {
                         {users.map(user => {
                             return (
                                 <tr key={user._id}>
-                                    <td className="px-6 py-4 text-sm whitespace-nowrap">{user.firstName}</td>
-                                    <td className="px-6 py-4 text-sm whitespace-nowrap">{user.lastName}</td>
-                                    <td className="px-6 py-4 text-sm whitespace-nowrap">
+                                    <td className="px-3 py-4 text-sm whitespace-nowrap">{user.firstName}</td>
+                                    <td className="px-3 py-4 text-sm whitespace-nowrap">{user.lastName}</td>
+                                    <td className="w-16 px-3 py-4 text-sm whitespace-nowrap">
                                         {user.registrationStatus === 'Not registered' ? (
                                             <span className="inline-block w-3 h-3 rounded-full bg-red-500"></span>
                                         ) : (
                                             <span className="inline-block w-3 h-3 rounded-full bg-green-500"></span>
                                         )}
                                     </td>
-                                    <td className="px-6 py-4 text-sm whitespace-nowrap">
+                                    <td className="w-16 px-3 py-4 text-sm whitespace-nowrap">
                                         {user.registrationStatus === 'Not registered' ? <span className="inline-block w-3 h-3 rounded-full border border-gray-500"></span>
          : user.attendanceStatus === 'Unknown' ? (
                                             <span className="inline-block w-3 h-3 rounded-full bg-yellow-500"></span>
@@ -103,13 +103,21 @@ export const UserTable = ({ users, groups }) => {
                                             (<span className="inline-block w-3 h-3 rounded-full bg-red-500"></span>
                                             )}
                                     </td>
-                                    <td className="px-6 py-4 text-sm whitespace-nowrap">{user.registrationStatus === 'Not registered' ? <span className="inline-block w-3 h-3 rounded-full border border-gray-500"></span>
+                                    <td className="w-16 px-3 py-4 text-sm whitespace-nowrap">{user.registrationStatus === 'Not registered' ? <span className="inline-block w-3 h-3 rounded-full border border-gray-500"></span>
          : (user.brunch ? <span className="inline-block w-3 h-3 rounded-full bg-green-500"></span> : <span className="inline-block w-3 h-3 rounded-full bg-red-500"></span>)}</td>
-                                    <td className="px-6 py-4 text-sm whitespace-nowrap">{user.registrationStatus === 'Not registered' ? <span className="inline-block w-3 h-3 rounded-full border border-gray-500"></span>
+                                    <td className="w-16 px-3 py-4 text-sm whitespace-nowrap">{user.registrationStatus === 'Not registered' ? <span className="inline-block w-3 h-3 rounded-full border border-gray-500"></span>
          : (user.camping ? <span className="inline-block w-3 h-3 rounded-full bg-green-500"></span> : <span className="inline-block w-3 h-3 rounded-full bg-red-500"></span>)}</td>
-                                    <td className="px-6 py-4 text-sm whitespace-nowrap">{user.registrationStatus === 'Not registered' ? '' : user.dietaryRestrictions}</td>
-                                    <td className="px-6 py-4 text-sm whitespace-nowrap">{user.registrationStatus === 'Not registered' ? '' : user.dietaryInfo ? user.dietaryInfo : '-'}</td>
-                                    <td className="px-6 py-4 text-sm whitespace-nowrap">{user.registrationStatus === 'Not registered' ? '' : user.songRequest ? user.songRequest : '-'}</td>
+                                    <td className="px-3 py-4 text-sm whitespace-nowrap">{user.registrationStatus === 'Not registered' ? '' : user.dietaryRestrictions}</td>
+                                    <td className="px-3 py-4 text-sm whitespace-nowrap overflow-hidden">
+                                        <p className="w-25 truncate">
+                                            {user.registrationStatus === 'Not registered' ? '' : user.dietaryInfo ? user.dietaryInfo : '-'}
+                                        </p>
+                                    </td>
+                                    <td className="px-6 py-4 text-sm whitespace-nowrap overflow-hidden">
+                                        <p className="w-25 truncate">
+                                            {user.registrationStatus === 'Not registered' ? '' : user.songRequest ? user.songRequest : '-'}
+                                        </p>
+                                    </td>
                                     <td className="px-6 py-4 text-sm whitespace-nowrap flex items-center justify-between w-full gap-2">
                                         <button
                                             onClick={() => {
