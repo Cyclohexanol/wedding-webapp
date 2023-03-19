@@ -97,6 +97,10 @@
     "wl-cocktail-description": "We love to drink too",
     "wl-excursion-description": "Sea, land, or air...",
     "update-cart": "Update cart",
+    "price": "Price",
+    "remaining-quantity": "Remaining quantity",
+    "purchase-thank-you": "Thank you !",
+    "edit-cart": "Edit cart",
     "info": {
         "wedding": {
             "title": "Our Wedding",
@@ -128,6 +132,41 @@
         "seat-message": "Sarah & Ambroise are currently scratching their heads to figure out the best seating arrangements for everyone. We appreciate your patience and will have it sorted out soon!",
         "quiz-message": "Our wedding quiz will be available soon! Come back and test your knowledge of the bride and groom!",
         "pic-collector-message": "We know everyone is eagerly waiting for the traditional slideshow, but we have something even better in store for you! Our Pic Collector will allow you to submit and share your own photos of the bride and groom. Keep an eye out for codes throughout the wedding that will give you access to exclusive photos. And if you have any photos you'd like to share with the rest of the guests, feel free to send them to Ambroise!"
-    }
-
+    },
+    "cash": {
+        "purchase-thank-you": "Thank you !",
+        "table": {
+            "name": "Name",
+            "quantity": "Quantity",
+            "total-price": "Total Price",
+            "total": "Total"
+        },
+        "edit-cart-button": "Edit Cart",
+        "bank-details": "Payment Details",
+        "bank-details-instruction": "In order to avoid any commission from an external service, we kindly suggest that you transfer the money directly to our shared bank account. The details are provided below.",
+        "bank-name": "Account Holder Name",
+        "bank-address": "Address",
+        "iban": "IBAN",
+        "swift": "SWIFT / BIC",
+        "bank": "Bank",
+        "copy-to-clipboard-instruction": "Click on each row to copy the information to the clipboard.",
+        "copied-to-clipboard": "Copied to clipboard"
+    },
+    "cartBanner": {
+        "itemsInCart": "Items in cart",
+        "totalPrice": "Total price",
+        "validateOrder": "Validate Order"
+    },
+    "admin-panel": "Admin Panel",
+    "delete-user": "Delete User",
+    "delete-user-question-confirmation": "Are you sure you want to delete this user?",
+    "delete-group": "Delete Group",
+    "delete-group-question-confirmation": "Are you sure you want to delete this user?\nAll associated users will also be deleted:",
+    "first-name": "Frist Name",
+    "last-name": "Last Name",
+    "add-group": "Add Group",
+    "super-group": "Super Group",
+    "group-name": "Group Name",
+    "add-user": "Add User",
+    "group":  "Group"
 }

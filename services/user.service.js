@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { fetchWrapper } from '../helpers/fetch-wrapper';
 
 // const { publicRuntimeConfig } = getConfig();
-export const baseUrl = "http://localhost:5000/api";
+export const baseUrl = "https://wedding-api.saamb.app/api";
 const tokenSubject = new BehaviorSubject(process.browser && localStorage.getItem('token'));
 const memberSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('member')));
 
@@ -27,7 +27,14 @@ export const userService = {
     getCart,
     addToCart,
     removeFromCart,
-    markPaid
+    markPaid,
+    getPaymentInfo,
+    getAllGroups,
+    getAllUsers,
+    deleteUser,
+    deleteGroup,
+    addGroup,
+    addUser
 };
 
 function setActiveMember(member) {
@@ -59,19 +66,40 @@ function updateSelfInfo() {
     })
 }
 
-function updateUser(member, dietaryRestrictions, attendanceStatus, dietaryInfo, songRequest, brunch, camping) {
+function updateUser(member, dietaryRestrictions, registerationStatus, attendanceStatus, dietaryInfo, songRequest, brunch, camping, firstName, lastName) {
     const content = {
         user_id: member._id,
-        registerationStatus: "Registered",
+        registerationStatus,
         dietaryRestrictions,
         attendanceStatus,
         dietaryInfo,
         songRequest,
         brunch,
-        camping
+        camping,
+        firstName,
+        lastName
     }
     return fetchWrapper.put(`${baseUrl}/users`, content);
 
+}
+
+function addGroup(name, password, superGroup) {
+    const content = {
+        name,
+        password,
+        superGroup
+    }
+    return fetchWrapper.post(`${baseUrl}/groups`, content);
+}
+
+function addUser(firstName, lastName, groupId) {
+    const content = {
+        firstName,
+        lastName,
+        group_id: +groupId
+    }
+    console.log(content)
+    return fetchWrapper.post(`${baseUrl}/users`, content);
 }
 
 function logout() {
@@ -129,5 +157,36 @@ function markPaid(paid){
             paid
         }
         )
+        .then(response => response);
+}
+
+function getPaymentInfo() {
+    return fetchWrapper.get(`${baseUrl}/payment-info`)
+        .then(response => response.payment_info);
+}
+
+function getAllGroups() {
+    return fetchWrapper.get(`${baseUrl}/groups/getAll`)
+        .then(response => response.groups);
+}
+
+function getAllUsers() {
+    return fetchWrapper.get(`${baseUrl}/users/getAll`)
+        .then(response => response.users);
+}
+
+function deleteUser(userId) {
+    return fetchWrapper.delete(`${baseUrl}/users`,
+    {
+        user_id: userId
+    })
+        .then(response => response);
+}
+
+function deleteGroup(groupId) {
+    return fetchWrapper.delete(`${baseUrl}/groups`,
+        {
+            group_id: groupId
+        })
         .then(response => response);
 }

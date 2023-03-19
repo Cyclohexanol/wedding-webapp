@@ -23,6 +23,8 @@ class MyDocument extends Document {
           <Main />
                 <NextScript />
                 <div id="logout-modal" />
+                <div id="modal-root"></div>
+
         </body>
       </Html>
     )

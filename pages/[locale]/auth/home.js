@@ -17,11 +17,13 @@ import InformationSVG from "../../../public/images/info-green.svg";
 import QuizzSVG from "../../../public/images/quizz-green.svg";
 import BabyPicSVG from "../../../public/images/camera-green.svg";
 import ChairSVG from "../../../public/images/chair-green.svg";
+import AdminSVG from '../../../public/images/admin-green.svg';
 
 const Home = () => {
     const { t } = useTranslation(["common"]);
 
     const [unregisteredMembers, setUnregisteredMembers] = useState(0);
+    const [isAdminGroup, setIsAdminGroup] = useState(false); 
 
     useEffect(() => {
         const fetchUnregisteredMembers = async () => {
@@ -31,6 +33,7 @@ const Home = () => {
                 (member) => member.registrationStatus !== "Registered"
             ).length;
             setUnregisteredMembers(unregisteredCount);
+            setIsAdminGroup(response.group.superGroup);
         };
         fetchUnregisteredMembers();
     }, []);
@@ -68,6 +71,14 @@ const Home = () => {
                             <ChairSVG className="w-12 h-12 m-2 hover:stroke-white" />
                             <p>{t('table-seating')}</p>
                         </MenuIcon>
+                        {isAdminGroup && (
+                            <MenuIcon linkref="/auth/admin">
+                                <AdminSVG className="w-12 h-12 m-2 hover:stroke-white" />
+                                <p>{t('admin-panel')}</p>
+                            </MenuIcon>
+                        )}
+                        <div className="m-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+                        </div>
                     </div>
                 </div>
             </main>

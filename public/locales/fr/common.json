@@ -97,6 +97,10 @@
     "wl-cocktail-description": "On aime boire aussi",
     "wl-excursion-description": "Mer, terre ou dans les airs ...",
     "update-cart": "Mettre à jour",
+    "price": "Prix",
+    "remaining-quantity": "Quantité restante",
+    "purchase-thank-you": "Merci !",
+    "edit-cart": "Modifier le panier",
     "info": {
         "wedding": {
             "title": "Notre Mariage",
@@ -128,5 +132,41 @@
         "seat-message": "Sarah & Ambroise réfléchissent actuellement à la meilleure disposition de places pour tout le monde. Nous vous remercions de votre patience et nous allons bientôt régler cela !",
         "quiz-message": "Notre quiz de mariage sera bientôt disponible ! Revenez et testez vos connaissances sur la mariée et le marié !",
         "pic-collector-message": "Nous savons que tout le monde attend avec impatience le traditionnel diaporama, mais nous avons quelque chose de bien mieux pour vous ! Notre Pic Collector vous permettra de soumettre et de partager vos propres photos dossier de la mariée et du marié. Soyez attentif aux codes disséminés dans le mariage qui vous donneront accès à des photos exclusives. Et si vous avez des photos que vous souhaitez partager avec le reste des invités, n'hésitez pas à les envoyer à Ambroise !"
-    }
+    },
+    "cash": {
+        "purchase-thank-you": "Merci !",
+        "table": {
+            "name": "Nom",
+            "quantity": "Quantité",
+            "total-price": "Prix total",
+            "total": "Total"
+        },
+        "edit-cart-button": "Modifier le panier",
+        "bank-details": "Coordonnées bancaires",
+        "bank-details-instruction": "Afin d'éviter toute commission provenant d'un service externe, nous vous suggérons de transférer l'argent directement sur notre compte bancaire commun. Les détails sont fournis ci-dessous.",
+        "bank-name": "Nom du titulaire du compte",
+        "bank-address": "Adresse",
+        "iban": "IBAN",
+        "swift": "SWIFT / BIC",
+        "bank": "Banque",
+        "copy-to-clipboard-instruction": "Cliquez sur chaque ligne pour copier les informations dans le presse-papiers.",
+        "copied-to-clipboard": "Copié dans le presse-papiers"
+    },
+    "cartBanner": {
+        "itemsInCart": "Articles dans le panier",
+        "totalPrice": "Prix total",
+        "validateOrder": "Valider la commande"
+    },
+    "admin-panel": "Admin Panel",
+    "delete-user": "Supprimer l'utilisateur",
+    "delete-user-question-confirmation": "Êtes-vous sûr de vouloir supprimer l'utilisateur?",
+    "delete-group": "Supprimer le groupe",
+    "delete-group-question-confirmation": "Êtes-vous sûr de vouloir supprimer le groupe?\nLes utilisateurs du group seront également supprimés:",
+    "first-name": "Prénom",
+    "last-name": "Nom",
+    "add-group": "Ajouter un groupe",
+    "super-group" "Administrateur",
+    "group-name": "Nom du groupe",
+    "add-user": "Ajouter un utilisateur",
+    "group": "Groupe"
 }

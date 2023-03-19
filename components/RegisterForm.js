@@ -1,13 +1,13 @@
-import { useTranslation } from 'next-i18next'
 import { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { userService } from '../services/user.service';
 import { alertService } from '../services/alert.service';
+import { useTranslation } from 'next-i18next'
 
+export const RegisterForm = ({ member, onSave, isAdmin, ...rest }) => {
 
-export const RegisterForm = ({ member, ...rest }) => {
 
     const { t } = useTranslation('common')
 
@@ -15,17 +15,18 @@ export const RegisterForm = ({ member, ...rest }) => {
     const [brunch, setBrunch] = useState(member.brunch || false)
     const [camping, setCamping] = useState(member.camping || false)
 
-    // TODO: pass to props after useeffect of parent 
-
     const validationSchema = Yup.object().shape({
+        firstName: Yup.string().required('First name is required'),
+        lastName: Yup.string().required('Last name is required'),
         attendanceStatus: Yup.string().required('Answer is required')
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
     const { register, handleSubmit, formState, setValue } = useForm(formOptions);
 
-
     useEffect(() => {
         if (member) {
+            setValue('firstName', member.firstName || '');
+            setValue('lastName', member.lastName || '');
             setValue('attendanceStatus', member.attendanceStatus || '');
             setValue('dietaryRestrictions', member.dietaryRestrictions || '');
             setValue('dietaryInfo', member.dietaryInfo || '');
@@ -36,13 +37,27 @@ export const RegisterForm = ({ member, ...rest }) => {
     }, [member, setValue]);
 
     function onSubmit(data) {
+        const registerationStatus = data.attendanceStatus === "Unknown" ? "Not registered" : "Registered";
         return userService
-            .updateUser(member, data.dietaryRestrictions, data.attendanceStatus, data.dietaryInfo, data.songRequest, brunch, camping)
+            .updateUser(
+                member,
+                data.dietaryRestrictions,
+                registerationStatus,
+                data.attendanceStatus,
+                data.dietaryInfo,
+                data.songRequest,
+                brunch,
+                camping,
+                data.firstName,
+                data.lastName
+            )
             .then(() => {
-                window.location.reload();
+                onSave();
+                window.location.reload(); 
             })
             .catch(alertService.error);
     }
+
 
     return (
         <div className="border border-green-900 bg-stone-100 font-semibold text-block py-2 px-4 rounded flex flex-col">
@@ -51,18 +66,30 @@ export const RegisterForm = ({ member, ...rest }) => {
                     <p>{member.firstName} {member.lastName}</p>
                     <p className={member.registrationStatus == "Registered" ? "text-green-900 text-xs italic" : "text-red-600 text-xs italic"}>{member.registrationStatus == "Registered" ? t('registered') : t('not-registered')}</p>
                 </div>
-                <form>
+                {!isAdmin && (<form>
                     <label className="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" value="" className="sr-only peer" onClick={() => setShowForm(!showForm)} />
                         <div className="w-11 h-6 bg-stone-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-700"></div>
                     </label>
-                </form>
+                </form>)}
             </div>
             
-            {showForm ? (
+            {isAdmin || showForm ? (
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="py-2">
-                        <div className="pt-2">
+                        {isAdmin && (
+                            <>
+                                <div className="pt-4">
+                                    <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-stone-900 ">{t('first-name')}</label>
+                                    <input {...register("firstName")} type="text" id="firstName" className="bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-green-900 focus:border-green-900 block w-full p-2.5"/>
+                                </div>
+                                <div className="pt-4">
+                                    <label htmlFor="lastName" className="block mb-2 text-sm font-medium text-stone-900 ">{t('last-name')}</label>
+                                    <input {...register("lastName")} type="text" id="lastName" className="bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-green-900 focus:border-green-900 block w-full p-2.5"/>
+                                </div>
+                            </>
+                            )}
+                        <div className="pt-4">
                             <label htmlFor="attendanceStatus" className="block mb-2 text-sm font-medium text-stone-900 ">{t('will-you-join-us')}</label>
                             <select {...register("attendanceStatus")}  id="attendanceStatus" className="bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-green-900 focus:border-green-900 block w-full p-2.5">
                                 <option defaultValue value="Unknown">{t('select-option')}</option>
