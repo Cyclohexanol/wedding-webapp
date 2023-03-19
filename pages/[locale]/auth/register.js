@@ -39,7 +39,7 @@ const Register = () => {
                 </div>
                 <div className="container mx-auto">
                     <div className="m-4 grid grid-cols-1 gap-4">
-                        {info && info.users.map((member) => (<RegisterForm key={member._id} member={member} />))}
+                        {info && info.users.map((member) => (<RegisterForm key={member._id} member={member} onSave={() => { } } />))}
                         <Link
                             
                             href="/auth/home"

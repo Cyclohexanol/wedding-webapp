@@ -62,16 +62,18 @@ function updateSelfInfo() {
     })
 }
 
-function updateUser(member, dietaryRestrictions, attendanceStatus, dietaryInfo, songRequest, brunch, camping) {
+function updateUser(member, dietaryRestrictions, registerationStatus, attendanceStatus, dietaryInfo, songRequest, brunch, camping, firstName, lastName) {
     const content = {
         user_id: member._id,
-        registerationStatus: "Registered",
+        registerationStatus,
         dietaryRestrictions,
         attendanceStatus,
         dietaryInfo,
         songRequest,
         brunch,
-        camping
+        camping,
+        firstName,
+        lastName
     }
     return fetchWrapper.put(`${baseUrl}/users`, content);
 

@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\components",
+    "\\css",
+    "\\lib",
     "\\pages",
-    "\\pages\\[locale]",
     "\\pages\\[locale]\\auth",
     "\\public",
-    "\\public\\locales",
     "\\public\\locales\\en",
     "\\public\\locales\\fr",
     "\\services"
   ],
-  "SelectedNode": "\\pages\\auth\\admin.js",
+  "SelectedNode": "\\components\\KPICard.js",
   "PreviewInSolutionExplorer": false
 }
