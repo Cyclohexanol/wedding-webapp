@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { fetchWrapper } from '../helpers/fetch-wrapper';
 
 // const { publicRuntimeConfig } = getConfig();
-export const baseUrl = "http://localhost:5000/api";
+export const baseUrl = "https://wedding-api.saamb.app/api";
 const tokenSubject = new BehaviorSubject(process.browser && localStorage.getItem('token'));
 const memberSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('member')));
 

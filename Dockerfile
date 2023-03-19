@@ -5,7 +5,6 @@ COPY . .
 # install node dependencies
 RUN npm install
 RUN npm run build
-RUN npm run downloadLocales
 
 # gunicorn
-CMD ["npm", "run", "serve"]
+CMD ["npm", "run", "server"]
