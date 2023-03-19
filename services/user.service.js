@@ -28,7 +28,9 @@ export const userService = {
     addToCart,
     removeFromCart,
     markPaid,
-    getPaymentInfo
+    getPaymentInfo,
+    getAllGroups,
+    getAllUsers
 };
 
 function setActiveMember(member) {
@@ -136,4 +138,14 @@ function markPaid(paid){
 function getPaymentInfo() {
     return fetchWrapper.get(`${baseUrl}/payment-info`)
         .then(response => response.payment_info);
+}
+
+function getAllGroups() {
+    return fetchWrapper.get(`${baseUrl}/groups/getAll`)
+        .then(response => response.groups);
+}
+
+function getAllUsers() {
+    return fetchWrapper.get(`${baseUrl}/users/getAll`)
+        .then(response => response.users);
 }

@@ -156,5 +156,6 @@
         "itemsInCart": "Items in cart",
         "totalPrice": "Total price",
         "validateOrder": "Validate Order"
-    }
+    },
+    "admin-panel": "Admin Panel"
 }
