@@ -100,6 +100,7 @@
     "price": "Price",
     "remaining-quantity": "Remaining quantity",
     "purchase-thank-you": "Thank you !",
+    "quantity-in-cart": "Quantity in cart",
     "edit-cart": "Edit cart",
     "info": {
         "wedding": {
@@ -168,5 +169,5 @@
     "super-group": "Super Group",
     "group-name": "Group Name",
     "add-user": "Add User",
-    "group":  "Group"
+    "group": "Group"
 }

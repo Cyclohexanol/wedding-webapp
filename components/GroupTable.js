@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import XSVG from '../public/images/x-symbol.svg';
 import StarSVG from '../public/images/star.svg';
+import CartSVG from '../public/images/cart.svg';
 import DeleteGroupModal from './DeleteGroupModal';
+import ClearCartModal from './ClearCartModal';
 import AddGroupModal from './AddGroupModal';
 import { useTranslation } from "next-i18next";
 
@@ -10,6 +12,8 @@ export const GroupTable = ({ groups }) => {
 
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
     const [selectedGroup, setSelectedGroup] = useState(null);
+    const [clearCartModalOpen, setClearCartModalOpen] = useState(false);
+
 
 
     const [addGroupModalOpen, setAddGroupModalOpen] = useState(false);
@@ -31,6 +35,16 @@ export const GroupTable = ({ groups }) => {
         setSelectedGroup(null);
         setDeleteModalOpen(false);
     };
+
+    const openClearCartModal = (user) => {
+        setSelectedGroup(user);
+        setClearCartModalOpen(true);
+    };
+
+    const closeClearCartModal = () => {
+        setClearCartModalOpen(false);
+    };
+
     return (
         <>
             <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
@@ -85,7 +99,7 @@ export const GroupTable = ({ groups }) => {
                                     <td className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${group.superGroup ? 'font-bold' : ''}`}>{brunchMembers}</td>
                                     <td className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${group.superGroup ? 'font-bold' : ''}`}>{campingMembers}</td>
                                     <td className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${group.superGroup ? 'font-bold' : ''}`}>CHF {cartTotal.toFixed(2)}</td>
-                                    <td className={`px-6 py-4 text-sm whitespace-nowrap flex items-center justify-center w-full ${group.superGroup ? 'font-bold' : ''}`}>
+                                    <td className={`px-6 py-4 text-sm whitespace-nowrap flex items-center gap-3 justify-center w-full ${group.superGroup ? 'font-bold' : ''}`}>
                                         <button
                                             onClick={() => {
                                                 openDeleteModal(group);
@@ -93,6 +107,14 @@ export const GroupTable = ({ groups }) => {
                                             className="focus:outline-none"
                                         >
                                             <XSVG className="w-5 h-5 text-gray-500 hover:text-gray-700" />
+                                        </button>
+                                        <button
+                                            onClick={() => {
+                                                openClearCartModal(group);
+                                            }}
+                                            className="focus:outline-none"
+                                        >
+                                            <CartSVG className="w-5 h-5 text-gray-500 hover:text-gray-700" />
                                         </button>
                                     </td>
                                 </tr>
@@ -115,6 +137,7 @@ export const GroupTable = ({ groups }) => {
             
             {deleteModalOpen && <DeleteGroupModal closeModal={closeDeleteModal} group={selectedGroup} />}
             {addGroupModalOpen && <AddGroupModal closeModal={closeAddGroupModal} />}
+            {clearCartModalOpen && <ClearCartModal closeModal={closeClearCartModal} group={selectedGroup} />}
 
         </>
     );

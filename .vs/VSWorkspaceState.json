@@ -2,15 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\components",
-    "\\css",
-    "\\lib",
     "\\pages",
-    "\\pages\\[locale]\\auth",
     "\\public",
+    "\\public\\locales",
     "\\public\\locales\\en",
     "\\public\\locales\\fr",
     "\\services"
   ],
-  "SelectedNode": "\\components\\KPICard.js",
+  "SelectedNode": "\\components\\AddGroupModal.js",
   "PreviewInSolutionExplorer": false
 }

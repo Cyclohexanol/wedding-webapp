@@ -34,7 +34,9 @@ export const userService = {
     deleteUser,
     deleteGroup,
     addGroup,
-    addUser
+    addUser,
+    updateWish,
+    clearCart
 };
 
 function setActiveMember(member) {
@@ -185,6 +187,27 @@ function deleteUser(userId) {
 
 function deleteGroup(groupId) {
     return fetchWrapper.delete(`${baseUrl}/groups`,
+        {
+            group_id: groupId
+        })
+        .then(response => response);
+}
+
+function updateWish(wish_id, title, price, description, picture_url, quantity) {
+    const content = {
+        wish_id,
+        title,
+        price,
+        description,
+        picture_url,
+        quantity
+    }
+    return fetchWrapper.put(`${baseUrl}/wishlist`, content)
+        .then(response => response);;
+}
+
+function clearCart(groupId) {
+    return fetchWrapper.delete(`${baseUrl}/groups/cartClear`,
         {
             group_id: groupId
         })

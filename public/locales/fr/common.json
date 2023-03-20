@@ -60,7 +60,7 @@
     "wl-internet": "Un pack de donnée internet",
     "wl-mosquito": "De l'antimoustique",
     "wl-sunglasses": "Une paire de lunettes de soleil de plage",
-    "wl-fastfood": "Un fastfood à l'aeport",
+    "wl-fastfood": "Un fastfood à l'aéroport",
     "wl-champagne": "Une bouteille de champagne pour le premier soir",
     "wl-brunch": "Un brunch",
     "wl-taxi": "Un voyage en taxi ou en tuktuk",
@@ -101,6 +101,7 @@
     "remaining-quantity": "Quantité restante",
     "purchase-thank-you": "Merci !",
     "edit-cart": "Modifier le panier",
+    "quantity-in-cart": "Quantité dans le panier",
     "info": {
         "wedding": {
             "title": "Notre Mariage",
