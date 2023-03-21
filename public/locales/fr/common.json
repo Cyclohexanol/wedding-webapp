@@ -169,5 +169,7 @@
     "super-group": "Administrateur",
     "group-name": "Nom du groupe",
     "add-user": "Ajouter un utilisateur",
-    "group": "Groupe"
+    "group": "Groupe",
+    "out-of-stock": "Rupture de stock",
+    "stock-limit": "Limite max atteinte"
 }

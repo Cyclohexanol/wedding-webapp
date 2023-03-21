@@ -15,20 +15,46 @@ const AdminPanel = () => {
     const [wishes, setWishes] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
 
-    useEffect(() => {
-        userService.getAllGroups()
-            .then(data => {
-                setGroups(data)
+    const fetchData = () => {
+        userService
+            .getAllGroups()
+            .then((data) => {
+                setGroups(data);
             })
-        userService.getAllUsers()
-            .then(data => {
-                setUsers(data)
+            .catch((error) => {
+                console.error('Error fetching groups:', error);
+            });
+
+        userService
+            .getAllUsers()
+            .then((data) => {
+                setUsers(data);
             })
-        userService.getAllWishes()
-            .then(data => {
+            .catch((error) => {
+                console.error('Error fetching users:', error);
+            });
+
+        userService
+            .getAllWishes()
+            .then((data) => {
                 console.log(data);
                 setWishes(data.wishes);
+            })
+            .catch((error) => {
+                console.error('Error fetching wishes:', error);
             });
+    };
+
+    useEffect(() => {
+        fetchData(); // Fetch data on initial load
+
+        const intervalId = setInterval(() => {
+            fetchData(); // Refresh data every 3 seconds
+        }, 3000);
+
+        return () => {
+            clearInterval(intervalId); // Clear interval when the component is unmounted
+        };
     }, []);
 
     const registeredUsers = users.filter(

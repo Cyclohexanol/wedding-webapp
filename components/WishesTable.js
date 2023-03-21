@@ -54,7 +54,13 @@ export const WishesTable = ({ wishes, groups }) => {
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
                         {wishes.map(wish => {
-                            const soldItems = wish.totalQuantity - wish.quantity;
+                            const soldItems = groups.reduce((acc, group) => {
+                                if (group.paid) {
+                                    const item = group.cart.find(item => item._id === wish._id);
+                                    return item ? acc + item.quantity : acc;
+                                }
+                                return acc;
+                            }, 0);
                             const reservedItems = groups.reduce((acc, group) => {
                                 if (!group.paid) {
                                     const item = group.cart.find(item => item._id === wish._id);
@@ -62,7 +68,7 @@ export const WishesTable = ({ wishes, groups }) => {
                                 }
                                 return acc;
                             }, 0);
-                            const availableItems = wish.quantity - reservedItems;
+                            const availableItems = wish.available;
                             const progressPercentage = (soldItems / wish.totalQuantity) * 100;
                             const reservedPercentage = (reservedItems / wish.totalQuantity) * 100;
                             const moneyMade = soldItems * wish.price;
@@ -98,7 +104,7 @@ export const WishesTable = ({ wishes, groups }) => {
                                         <div className="flex justify-between text-sm text-gray-700 mt-1">
                                             <span>Sold: {soldItems}</span>
                                             <span>Reserved: {reservedItems}</span>
-                                            <span>Available: {wish.quantity}</span>
+                                            <span>Available: {availableItems}</span>
                                         </div>
                                     </td>
                                     <td className="px-6 py-4 text-sm whitespace-nowrap">

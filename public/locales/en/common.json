@@ -169,5 +169,7 @@
     "super-group": "Super Group",
     "group-name": "Group Name",
     "add-user": "Add User",
-    "group": "Group"
+    "group": "Group",
+    "out-of-stock": "Out of stock",
+    "stock-limit": "Stock limit reached"
 }

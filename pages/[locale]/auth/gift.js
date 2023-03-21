@@ -63,12 +63,44 @@ const Gift = () => {
                 return [...prevCart, item];
             }
         });
+
+        if (item.quantity === 0) {
+            userService
+                .removeFromCart(item)
+                .then(() => {
+                    fetchUpdatedWishes();
+                })
+                .catch((error) => {
+                    console.error('Error removing item from cart:', error);
+                });
+        } else {
+            userService
+                .addToCart(item)
+                .then(() => {
+                    fetchUpdatedWishes();
+                })
+                .catch((error) => {
+                    console.error('Error adding item to cart:', error);
+                });
+        }
+
         // Update quantity remaining
         userService.getAllWishes()
             .then(fetchedWishes => {
                 setWishes(fetchedWishes.wishes);
             })
             .catch(error => {
+                console.error('Error fetching wishes:', error);
+            });
+    };
+
+    const fetchUpdatedWishes = () => {
+        userService
+            .getAllWishes()
+            .then((fetchedWishes) => {
+                setWishes(fetchedWishes.wishes);
+            })
+            .catch((error) => {
                 console.error('Error fetching wishes:', error);
             });
     };

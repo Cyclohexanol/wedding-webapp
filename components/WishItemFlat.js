@@ -79,27 +79,59 @@ const WishItem = ({ wish, selectedWish, updateCart }) => {
                 </div>
                 <div className="flex justify-between">
                     <div>CHF {wish.price}</div>
-                    <div className="flex items-center">
-                        <button
-                            className="bg-stone-200 w-5 h-5 rounded flex items-center justify-center"
-                            onClick={decreaseQuantity}
-                        >
-                            <span>-</span>
-                        </button>
-                        <span className="mx-2 w-8 text-center">
-                            {selectedWish ? selectedWish.quantity : 0}
-                        </span>
-                        <button
-                            className="bg-stone-200 w-5 h-5 rounded flex items-center justify-center"
-                            onClick={increaseQuantity}
-                        >
-                            <span>+</span>
-                        </button>
+                    <div className="flex flex-col items-end">
+                        
+                        <div className="flex items-center">
+                            {wish.quantity === 0 && (!selectedWish || selectedWish.quantity === 0) ? (
+                                <span className="bg-red-500 text-white text-xs px-2 py-1 rounded">
+                                    {t('out-of-stock')}
+                                </span>
+                            ) : (
+
+                                <div className="flex items-center">
+                                    {quantity === 0 ? (
+                                        <div className="w-5 h-5"></div>
+                                    ) : (
+                                        <button
+                                            className="bg-stone-200 w-5 h-5 rounded flex items-center justify-center"
+                                            onClick={decreaseQuantity}
+                                        >
+                                            <span>-</span>
+                                        </button>
+                                    )}
+                                    <span className="mx-2 w-8 text-center">
+                                        {selectedWish ? selectedWish.quantity : 0}
+                                    </span>
+                                    {selectedWish &&
+                                        selectedWish.quantity !== 0 &&
+                                        wish.quantity === 0 ? (
+                                        <div className="w-5 h-5"></div>
+                                    ) : (
+                                        <button
+                                            className="bg-stone-200 w-5 h-5 rounded flex items-center justify-center"
+                                            onClick={increaseQuantity}
+                                        >
+                                            <span>+</span>
+                                        </button>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                        {selectedWish &&
+                            selectedWish.quantity !== 0 &&
+                            wish.quantity === 0 ? (
+                            <span className="border border-stone-300 text-xs px-2 py-1 rounded">
+                                {t('stock-limit')}
+                            </span>
+                        ) : null}
                     </div>
                 </div>
             </div>
         </div>
     );
+
+
+
 
 
 };
