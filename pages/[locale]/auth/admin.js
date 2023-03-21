@@ -37,7 +37,6 @@ const AdminPanel = () => {
         userService
             .getAllWishes()
             .then((data) => {
-                console.log(data);
                 setWishes(data.wishes);
             })
             .catch((error) => {
