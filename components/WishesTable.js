@@ -27,6 +27,9 @@ export const WishesTable = ({ wishes, groups }) => {
                     <thead className="bg-gray-50">
                         <tr>
                             <th className="px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Image
+                            </th>
+                            <th className="px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Title
                             </th>
                             <th className="px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -65,6 +68,13 @@ export const WishesTable = ({ wishes, groups }) => {
                             const moneyMade = soldItems * wish.price;
                             return (
                                 <tr key={wish._id}>
+                                    <td className="flex items-center justify-center px-3 py-4 text-left text-sm whitespace-nowrap">
+                                        <img
+                                            src={wish.pictureUrl}
+                                            alt={t(wish.title)}
+                                            className="w-8 h-8 bg-stone-200 object-cover rounded-md"
+                                        />
+                                    </td>
                                     <td className="px-3 py-4 text-left text-sm whitespace-nowrap max-w-xs">
                                         <p className="truncate">{t(wish.title)}</p>
                                     </td>
