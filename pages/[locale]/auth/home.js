@@ -28,7 +28,6 @@ const Home = () => {
     useEffect(() => {
         const fetchUnregisteredMembers = async () => {
             const response = await userService.updateSelfInfo();
-            console.log(response);
             const unregisteredCount = response.group.users.filter(
                 (member) => member.registrationStatus !== "Registered"
             ).length;

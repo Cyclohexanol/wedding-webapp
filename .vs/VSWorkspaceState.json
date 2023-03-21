@@ -2,13 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\components",
+    "\\helpers",
     "\\pages",
-    "\\public",
+    "\\pages\\[locale]",
+    "\\pages\\[locale]\\auth",
     "\\public\\locales",
     "\\public\\locales\\en",
     "\\public\\locales\\fr",
     "\\services"
   ],
-  "SelectedNode": "\\components\\AddGroupModal.js",
+  "SelectedNode": "\\pages\\[locale]\\auth\\home.js",
   "PreviewInSolutionExplorer": false
 }
