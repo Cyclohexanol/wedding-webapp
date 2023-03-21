@@ -77,10 +77,16 @@ const WishItem = ({ wish, selectedWish, updateCart }) => {
                     <h2 className="text-sm font-semibold">{t(wish.title)}</h2>
                     <p className="text-xs text-gray-600 mb-2">{t(wish.description)}</p>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between items-end">
                     <div>CHF {wish.price}</div>
                     <div className="flex flex-col items-end">
-                        
+                        {selectedWish &&
+                            selectedWish.quantity !== 0 &&
+                            wish.quantity === 0 ? (
+                            <span className="border border-stone-300 text-xs px-2 py-1 rounded">
+                                {t('stock-limit')}
+                            </span>
+                        ) : null}
                         <div className="flex items-center">
                             {wish.quantity === 0 && (!selectedWish || selectedWish.quantity === 0) ? (
                                 <span className="bg-red-500 text-white text-xs px-2 py-1 rounded">
@@ -117,13 +123,7 @@ const WishItem = ({ wish, selectedWish, updateCart }) => {
                                 </div>
                             )}
                         </div>
-                        {selectedWish &&
-                            selectedWish.quantity !== 0 &&
-                            wish.quantity === 0 ? (
-                            <span className="border border-stone-300 text-xs px-2 py-1 rounded">
-                                {t('stock-limit')}
-                            </span>
-                        ) : null}
+                        
                     </div>
                 </div>
             </div>
