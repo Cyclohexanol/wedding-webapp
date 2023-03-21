@@ -96,10 +96,10 @@ const WishItem = ({ wish, selectedWish, updateCart }) => {
 
                                 <div className="flex items-center">
                                     {quantity === 0 ? (
-                                        <div className="w-5 h-5"></div>
+                                        <div className="w-7 h-7"></div>
                                     ) : (
                                         <button
-                                            className="bg-stone-200 w-5 h-5 rounded flex items-center justify-center"
+                                            className="bg-stone-200 w-7 h-7 rounded flex items-center justify-center"
                                             onClick={decreaseQuantity}
                                         >
                                             <span>-</span>
@@ -111,10 +111,10 @@ const WishItem = ({ wish, selectedWish, updateCart }) => {
                                     {selectedWish &&
                                         selectedWish.quantity !== 0 &&
                                         wish.quantity === 0 ? (
-                                        <div className="w-5 h-5"></div>
+                                        <div className="w-7 h-7"></div>
                                     ) : (
                                         <button
-                                            className="bg-stone-200 w-5 h-5 rounded flex items-center justify-center"
+                                            className="bg-stone-200 w-7 h-7 rounded flex items-center justify-center"
                                             onClick={increaseQuantity}
                                         >
                                             <span>+</span>
