@@ -83,7 +83,7 @@ const WishItem = ({ wish, selectedWish, updateCart }) => {
                         {selectedWish &&
                             selectedWish.quantity !== 0 &&
                             wish.quantity === 0 ? (
-                            <span className="border border-stone-300 text-xs px-2 py-1 rounded">
+                            <span className="border border-stone-300 text-xs px-2 py-1 mb-1 rounded">
                                 {t('stock-limit')}
                             </span>
                         ) : null}
