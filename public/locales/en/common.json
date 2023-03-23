@@ -5,7 +5,7 @@
     "h1": "Saamb Wedding App",
     "title": "Saamb | Wedding",
     "welcome-title": "Welcome to Sarah & Ambroise's Wedding App",
-    "login-instructions": "You will find in your invitation your group name and access code. These access combinaison are common to all the members of your group.",
+    "login-instructions": "You will find your group name and access code in your invitation. These access combinations are common to all members of your group.",
     "login-issue": "If you encounter a problem, please contact Ambroise.",
     "username": "Group name",
     "password": "Access code",
@@ -123,7 +123,7 @@
                 "description": "We recommend 2 hotels not too far away to walk from the house:",
                 "hotel1": "Modern Times Hotel",
                 "hotel2": "Vision Apartment Hotel",
-                "camping": "For the more adventurous, there will also be the option to camp in the garden."
+                "camping": "For the more adventurous, there will also be the option to camp on-site."
             }
         }
     },
