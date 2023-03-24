@@ -43,11 +43,14 @@ export const userService = {
     postAnswer,
     getNextQuestion,
     getLeaderboard,
-    getCurrentQuestion
+    getCurrentQuestion,
+    getUserQuiz
 };
 
 function setActiveMember(member) {
     localStorage.setItem('member', JSON.stringify(member));
+    memberSubject.next(member)
+
 }
 
 function login(name, password) {
@@ -129,27 +132,31 @@ function editQuestion(question_id, difficulty, correctOption) {
 }
 
 function getNextQuestion(user_id) {
-    content = {
-        user_id
-    }
-    return fetchWrapper.get(`${baseUrl}/questions/next`, content)
+    const queryParams = new URLSearchParams({ user_id });
+    return fetchWrapper.get(`${baseUrl}/questions/next?${queryParams.toString()}`)
         .then(response => {
-            return response.question
+            return response.question;
         });
 }
 
 function getCurrentQuestion(user_id) {
-    content = {
-        user_id
-    }
-    return fetchWrapper.get(`${baseUrl}/questions/current`, content)
+    const queryParams = new URLSearchParams({ user_id });
+    return fetchWrapper.get(`${baseUrl}/questions/current?${queryParams.toString()}`)
         .then(response => {
-            return response.question
+            return response.question;
+        });
+}
+
+function getUserQuiz(user_id) {
+    const queryParams = new URLSearchParams({ user_id });
+    return fetchWrapper.get(`${baseUrl}/userquiz?${queryParams.toString()}`)
+        .then(response => {
+            return response.user_quiz;
         });
 }
 
 function postAnswer(user_id, question_id, answer) {
-    content = {
+    const content = {
         user_id,
         question_id,
         answer
