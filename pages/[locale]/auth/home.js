@@ -58,7 +58,7 @@ const Home = () => {
                             <InformationSVG className="w-12 h-12 m-2 hover:stroke-white" />
                             <p>{t('useful-info')}</p>
                         </MenuIcon>
-                        <MenuIcon linkref="/auth/quizz">
+                        <MenuIcon linkref="/auth/quiz">
                             <QuizzSVG className="w-12 h-12 m-2 hover:stroke-white" />
                             <p>{t('quizz')}</p>
                         </MenuIcon>

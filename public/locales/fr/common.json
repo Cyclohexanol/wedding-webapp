@@ -115,7 +115,7 @@
                 "car": "Voiture",
                 "tain": "Train",
                 "by-car": "Parking organisé sur place",
-                "by-train": "La maison est à 3 minutes de la gare 'Vevey Vigneron', le train arrive à 15h14",
+                "by-train": "La maison est à 3 minutes de la gare 'Vevey Vigneron', le train part de Vevey Gare à 15h11",
                 "map": "Ouvrir sur Google Maps"
             },
             "accommodation": {
@@ -171,5 +171,85 @@
     "add-user": "Ajouter un utilisateur",
     "group": "Groupe",
     "out-of-stock": "Rupture de stock",
-    "stock-limit": "Limite max atteinte"
+    "stock-limit": "Limite max atteinte",
+    "delete-question": "Suprimmer la question",
+    "easy": "Facile",
+    "hard": "Difficile",
+    "add-question": "Ajouter une question",
+    "correct-option": "Réponse",
+    "difficulty": "Difficulté",
+    "quiz-intro": "Bienvenue à notre quiz conçu pour tester vos connaissances sur les mariés ! Ce quiz se compose de 20 questions. Les questions faciles valent 3 points tandis que les questions difficiles valent 5 points. Vous avez pouvez quitter la page à tout moment, et reprendre là où vous vous êtes arrêté à votre retour. Cependant, veuillez noter que vous n'avez qu'une seule tentative, alors répondez à chaque question avec soin. Bonne chance !",
+    "start-quiz": "Démarrer",
+    "questions": {
+        "question-1": {
+            "text": "Laquelle des propositions suivantes n’a jamais été mangée par Ambroise ?",
+            "option-a": "De l'alligatore",
+            "option-b": "De la baleine",
+            "option-c": "Du porc-épic",
+            "option-d": "Du serpent"
+        },
+        "question-2": {
+            "text": "Lequel de ces prénoms n’est pas celui d’une de nos plantes ?",
+            "option-a": "Paola",
+            "option-b": "Léopoldine",
+            "option-c": "Jonathan",
+            "option-d": "Babar"
+        },
+        "question-3": {
+            "text": "Nous ne possédons pas de…",
+            "option-a": "Machine à irish coffee",
+            "option-b": "Couteau à châtaigne",
+            "option-c": "Syphon",
+            "option-d": "Smoke Gun"
+        },
+        "question-4": {
+            "text": "Laquelle de ces propositions n’est pas un animal de compagnie de notre enfance?",
+            "option-a": "Archibald le chat",
+            "option-b": "John Wayne la tortue",
+            "option-c": "Chestnut le hamster",
+            "option-d": "Pirouette le lapin"
+        },
+        "question-5": {
+            "text": "Laquelle des propositions suivantes n’est pas l’un de nos surnoms (merci les parents) ?",
+            "option-a": "Sarriette",
+            "option-b": "Tranche de cake",
+            "option-c": "Titou",
+            "option-d": "Zazou"
+        },
+        "question-6": {
+            "text": "Notre légume préféré est ...",
+            "option-a": "Le fenouil",
+            "option-b": "La tomate",
+            "option-c": "Le chou de Bruxelles",
+            "option-d": "Le brocoli"
+        },
+        "question-7": {
+            "text": "Qu’est-ce que Sarah a répondu quand Ambroise l’a demandée en mariage ?",
+            "option-a": "Ok mais c’est toi qui fais les impôts",
+            "option-b": "Non mais tu plaisantes ?",
+            "option-c": "OUI!",
+            "option-d": "T'as demandé à mon père ?"
+        },
+        "question-8": {
+            "text": "Quel pays Sarah & Ambroise n'ont-ils pas visité ensemble ?",
+            "option-a": "Vietnam",
+            "option-b": "Norvège",
+            "option-c": "Equateur",
+            "option-d": "Maroc"
+        },
+        "question-9": {
+            "text": "Quelle est la différence d'âge entre Ambroise et Sarah ?",
+            "option-a": "31 mois",
+            "option-b": "7 mois",
+            "option-c": "17 mois",
+            "option-d": "19 mois"
+        },
+        "question-10": {
+            "text": "Quel a été leur premier achat commun après avoir emménagé ensemble ?",
+            "option-a": "Une armoire à verre",
+            "option-b": "Un lit",
+            "option-c": "Un BBQ",
+            "option-d": "Un KitchenAid"
+        }
+    }
 }

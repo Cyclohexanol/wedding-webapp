@@ -115,7 +115,7 @@
                 "car": "Car",
                 "tain": "Train",
                 "by-car": "Parking organized on site",
-                "by-train": "The house is 3 minutes away from 'Vevey Vigneron' station, the train arrives at 3:14 PM",
+                "by-train": "The house is 3 minutes away from 'Vevey Vigneron' station, the train leaves Vevey Station at 3:11 PM",
                 "map": "Open in Google Maps"
             },
             "accommodation": {
@@ -171,5 +171,86 @@
     "add-user": "Add User",
     "group": "Group",
     "out-of-stock": "Out of stock",
-    "stock-limit": "Stock limit reached"
+    "stock-limit": "Stock limit reached",
+    "delete-question": "Delete question",
+    "easy": "Easy",
+    "hard": "Hard",
+    "add-question": "Add question",
+    "correct-option": "Answer",
+    "difficulty": "Difficulty",
+    "quiz-intro": "Welcome to our quiz designed to test your knowledge about the bride and groom! This quiz consists of 20 questions that are categorized as either easy or hard. Easy questions are worth 3 points while hard questions are worth 5 points. You have the flexibility to pause the quiz and leave the page at any time, and when you return, you can continue where you left off. However, please note that you only have one attempt at the quiz, so make sure to answer each question carefully. Good luck!",
+    "start-quiz": "Start Quiz",
+    "questions": {
+        "question-1": {
+            "text": "Which of the following has Ambroise never eaten?",
+            "option-a": "Alligator",
+            "option-b": "Whale",
+            "option-c": "Porcupine",
+            "option-d": "Snake"
+        },
+        "question-2": {
+            "text": "Which of these names is not the name of one of our plants?",
+            "option-a": "Paola",
+            "option-b": "Léopoldine",
+            "option-c": "Jonathan",
+            "option-d": "Babar"
+        },
+        "question-3": {
+            "text": "We don't own a...",
+            "option-a": "Irish coffee machine",
+            "option-b": "Chestnut knife",
+            "option-c": "Siphon",
+            "option-d": "Smoke Gun"
+        },
+        "question-4": {
+            "text": "Which of these options is not a childhood pet?",
+            "option-a": "Archibald the cat",
+            "option-b": "John Wayne the turtle",
+            "option-c": "Chestnut the hamster",
+            "option-d": "Pirouette the rabbit"
+        },
+        "question-5": {
+            "text": "Which of the following is not one of our nicknames (thanks, parents)?",
+            "option-a": "Sarriette",
+            "option-b": "Slice of cake",
+            "option-c": "Titou",
+            "option-d": "Zazou"
+        },
+        "question-6": {
+            "text": "Our favorite vegetable is...",
+            "option-a": "Fennel",
+            "option-b": "Tomato",
+            "option-c": "Brussels sprouts",
+            "option-d": "Broccoli"
+        },
+        "question-7": {
+            "text": "What did Sarah say when Ambroise asked her to marry him?",
+            "option-a": "Ok, but you're doing the taxes",
+            "option-b": "Are you kidding?",
+            "option-c": "YES!",
+            "option-d": "Did you ask my father?"
+        },
+        "question-8": {
+            "text": "Which country have Sarah & Ambroise not visited together?",
+            "option-a": "Vietnam",
+            "option-b": "Norway",
+            "option-c": "Ecuador",
+            "option-d": "Morocco"
+        },
+        "question-9": {
+            "text": "What is the age difference between Ambroise and Sarah?",
+            "option-a": "31 months",
+            "option-b": "7 months",
+            "option-c": "17 months",
+            "option-d": "19 months"
+        },
+        "question-10": {
+            "text": "What was their first shared purchase after moving in together?",
+            "option-a": "A glass cabinet",
+            "option-b": "A bed",
+            "option-c": "A BBQ",
+            "option-d": "A KitchenAid"
+        }
+    }
+
 }

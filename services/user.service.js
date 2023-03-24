@@ -36,7 +36,14 @@ export const userService = {
     addGroup,
     addUser,
     updateWish,
-    clearCart
+    clearCart,
+    getAllQuestions,
+    addQuestion,
+    editQuestion,
+    postAnswer,
+    getNextQuestion,
+    getLeaderboard,
+    getCurrentQuestion
 };
 
 function setActiveMember(member) {
@@ -102,6 +109,55 @@ function addUser(firstName, lastName, groupId) {
     }
     console.log(content)
     return fetchWrapper.post(`${baseUrl}/users`, content);
+}
+
+function addQuestion(difficulty, correctOption) {
+    const content = {
+        difficulty,
+        correctOption
+    }
+    return fetchWrapper.post(`${baseUrl}/questions`, content);
+}
+
+function editQuestion(question_id, difficulty, correctOption) {
+    const content = {
+        question_id,
+        difficulty,
+        correctOption
+    }
+    return fetchWrapper.put(`${baseUrl}/questions`, content);
+}
+
+function getNextQuestion(user_id) {
+    content = {
+        user_id
+    }
+    return fetchWrapper.get(`${baseUrl}/questions/next`, content)
+        .then(response => {
+            return response.question
+        });
+}
+
+function getCurrentQuestion(user_id) {
+    content = {
+        user_id
+    }
+    return fetchWrapper.get(`${baseUrl}/questions/current`, content)
+        .then(response => {
+            return response.question
+        });
+}
+
+function postAnswer(user_id, question_id, answer) {
+    content = {
+        user_id,
+        question_id,
+        answer
+    }
+    return fetchWrapper.post(`${baseUrl}/answer`, content)
+        .then(response => {
+            return response.answer
+        });
 }
 
 function logout() {
@@ -177,6 +233,11 @@ function getAllUsers() {
         .then(response => response.users);
 }
 
+function getAllQuestions() {
+    return fetchWrapper.get(`${baseUrl}/questions/getAll`)
+        .then(response => response.questions);
+}
+
 function deleteUser(userId) {
     return fetchWrapper.delete(`${baseUrl}/users`,
     {
@@ -212,4 +273,9 @@ function clearCart(groupId) {
             group_id: groupId
         })
         .then(response => response);
+}
+
+function getLeaderboard() {
+    return fetchWrapper.get(`${baseUrl}/leaderboard`)
+        .then(response => response.players);
 }

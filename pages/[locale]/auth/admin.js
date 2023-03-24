@@ -5,14 +5,17 @@ import { Header } from '../../../components/Header';
 import { GroupTable } from '../../../components/GroupTable';
 import { UserTable } from '../../../components/UserTable';
 import { WishesTable } from '../../../components/WishesTable';
+import { QuestionsTable } from '../../../components/QuestionsTable';
 import { userService } from '../../../services/user.service';
 import { KPICard } from '../../../components/KPICard';
+import { Footer } from '../../../components/Footer'
 
 const AdminPanel = () => {
     const [activeTable, setActiveTable] = useState('users');
     const [groups, setGroups] = useState([]);
     const [users, setUsers] = useState([]);
     const [wishes, setWishes] = useState([]);
+    const [questions, setQuestions] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
 
     const fetchData = () => {
@@ -42,6 +45,15 @@ const AdminPanel = () => {
             .catch((error) => {
                 console.error('Error fetching wishes:', error);
             });
+
+        userService
+            .getAllQuestions()
+            .then((data) => {
+                setQuestions(data);
+            })
+            .catch((error) => {
+                console.error('Error fetching questions:', error);
+            });
     };
 
     useEffect(() => {
@@ -49,7 +61,7 @@ const AdminPanel = () => {
 
         const intervalId = setInterval(() => {
             fetchData(); // Refresh data every 3 seconds
-        }, 3000);
+        }, 10000);
 
         return () => {
             clearInterval(intervalId); // Clear interval when the component is unmounted
@@ -246,6 +258,9 @@ const AdminPanel = () => {
                                 <button className={`px-5 py-2 text-xs font-medium ${activeTable === 'wishes' ? 'text-gray-600 bg-gray-100' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'} transition-colors duration-200 sm:text-sm`} onClick={() => handleClick('wishes')}>
                                     Wishes
                                 </button>
+                                <button className={`px-5 py-2 text-xs font-medium ${activeTable === 'questions' ? 'text-gray-600 bg-gray-100' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'} transition-colors duration-200 sm:text-sm`} onClick={() => handleClick('questions')}>
+                                    Questions
+                                </button>
                             </div>
                             <div className="relative flex items-center mt-4 md:mt-0">
                                 <span className="absolute">
@@ -264,8 +279,10 @@ const AdminPanel = () => {
                                         <GroupTable groups={filteredGroups} />
                                     ) : activeTable === 'users' ? (
                                         <UserTable users={filteredUsers} groups={groups} />
+                                    ) : activeTable === 'questions' ? (
+                                        <QuestionsTable questions={questions} />
                                     ) : (
-                                                <WishesTable wishes={filteredWishes} groups={groups} />
+                                        <WishesTable wishes={filteredWishes} groups={groups} />
                                     )}
                                 </div>
                             </div>
@@ -273,6 +290,7 @@ const AdminPanel = () => {
                     </div>
                 </div>
             </main>
+            <Footer/>
         </>
     );
 

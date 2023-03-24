@@ -12,7 +12,7 @@ const Quizz = () => {
         <>
             <main>
                 <Header title={t('title')} />
-                <Unimplemented message={t('unimplemented.quiz-message')} />
+                <Unimplemented message={"Leaderboard"} />
             </main>
 
             <Footer />

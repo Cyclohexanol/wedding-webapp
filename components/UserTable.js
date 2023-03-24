@@ -118,7 +118,7 @@ export const UserTable = ({ users, groups }) => {
                                             {user.registrationStatus === 'Not registered' ? '' : user.songRequest ? user.songRequest : '-'}
                                         </p>
                                     </td>
-                                    <td className="px-6 py-4 text-sm whitespace-nowrap flex items-center justify-between w-full gap-3">
+                                    <td className="px-6 py-4 text-sm whitespace-nowrap flex items-center justify-center w-full gap-3">
                                         <button
                                             onClick={() => {
                                                 openModal(user);
