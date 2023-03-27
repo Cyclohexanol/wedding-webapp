@@ -5,7 +5,8 @@ import { BehaviorSubject } from 'rxjs';
 import { fetchWrapper } from '../helpers/fetch-wrapper';
 
 // const { publicRuntimeConfig } = getConfig();
-export const baseUrl = "https://wedding-api-dev.saamb.app/api";
+const isProduction = process.env.BRANCH === 'main';
+export const baseUrl = isProduction ? "https://wedding-api.saamb.app/api" : "https://wedding-api-dev.saamb.app/api";
 const tokenSubject = new BehaviorSubject(process.browser && localStorage.getItem('token'));
 const memberSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('member')));
 
