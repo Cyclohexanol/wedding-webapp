@@ -5,7 +5,8 @@ import { BehaviorSubject } from 'rxjs';
 import { fetchWrapper } from '../helpers/fetch-wrapper';
 
 // const { publicRuntimeConfig } = getConfig();
-export const baseUrl = "https://wedding-api.saamb.app/api";
+const isProduction = process.env.BRANCH === 'main';
+export const baseUrl = isProduction ? "https://wedding-api.saamb.app/api" : "https://wedding-api-dev.saamb.app/api";
 const tokenSubject = new BehaviorSubject(process.browser && localStorage.getItem('token'));
 const memberSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('member')));
 
@@ -34,11 +35,23 @@ export const userService = {
     deleteUser,
     deleteGroup,
     addGroup,
-    addUser
+    addUser,
+    updateWish,
+    clearCart,
+    getAllQuestions,
+    addQuestion,
+    editQuestion,
+    postAnswer,
+    getNextQuestion,
+    getLeaderboard,
+    getCurrentQuestion,
+    getUserQuiz
 };
 
 function setActiveMember(member) {
     localStorage.setItem('member', JSON.stringify(member));
+    memberSubject.next(member)
+
 }
 
 function login(name, password) {
@@ -100,6 +113,59 @@ function addUser(firstName, lastName, groupId) {
     }
     console.log(content)
     return fetchWrapper.post(`${baseUrl}/users`, content);
+}
+
+function addQuestion(difficulty, correctOption) {
+    const content = {
+        difficulty,
+        correctOption
+    }
+    return fetchWrapper.post(`${baseUrl}/questions`, content);
+}
+
+function editQuestion(question_id, difficulty, correctOption) {
+    const content = {
+        question_id,
+        difficulty,
+        correctOption
+    }
+    return fetchWrapper.put(`${baseUrl}/questions`, content);
+}
+
+function getNextQuestion(user_id) {
+    const queryParams = new URLSearchParams({ user_id });
+    return fetchWrapper.get(`${baseUrl}/questions/next?${queryParams.toString()}`)
+        .then(response => {
+            return response.question;
+        });
+}
+
+function getCurrentQuestion(user_id) {
+    const queryParams = new URLSearchParams({ user_id });
+    return fetchWrapper.get(`${baseUrl}/questions/current?${queryParams.toString()}`)
+        .then(response => {
+            return response.question;
+        });
+}
+
+function getUserQuiz(user_id) {
+    const queryParams = new URLSearchParams({ user_id });
+    return fetchWrapper.get(`${baseUrl}/userquiz?${queryParams.toString()}`)
+        .then(response => {
+            return response.user_quiz;
+        });
+}
+
+function postAnswer(user_id, question_id, answer) {
+    const content = {
+        user_id,
+        question_id,
+        answer
+    }
+    return fetchWrapper.post(`${baseUrl}/answer`, content)
+        .then(response => {
+            return response.answer
+        });
 }
 
 function logout() {
@@ -175,6 +241,11 @@ function getAllUsers() {
         .then(response => response.users);
 }
 
+function getAllQuestions() {
+    return fetchWrapper.get(`${baseUrl}/questions/getAll`)
+        .then(response => response.questions);
+}
+
 function deleteUser(userId) {
     return fetchWrapper.delete(`${baseUrl}/users`,
     {
@@ -189,4 +260,30 @@ function deleteGroup(groupId) {
             group_id: groupId
         })
         .then(response => response);
+}
+
+function updateWish(wish_id, title, price, description, picture_url, quantity) {
+    const content = {
+        wish_id,
+        title,
+        price,
+        description,
+        picture_url,
+        quantity
+    }
+    return fetchWrapper.put(`${baseUrl}/wishlist`, content)
+        .then(response => response);;
+}
+
+function clearCart(groupId) {
+    return fetchWrapper.delete(`${baseUrl}/groups/cartClear`,
+        {
+            group_id: groupId
+        })
+        .then(response => response);
+}
+
+function getLeaderboard() {
+    return fetchWrapper.get(`${baseUrl}/leaderboard`)
+        .then(response => response.players);
 }

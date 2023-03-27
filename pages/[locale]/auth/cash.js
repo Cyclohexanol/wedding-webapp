@@ -54,7 +54,7 @@ const Cash = () => {
 
     return (
         <>
-            <Header />
+            <Header/>
             {cart.length > 0 ?
                 <div className="max-w-5xl mx-auto mt-8">
                     <h1 className="text-3xl font-bold mb-8 text-center">{t('cash.purchase-thank-you')}</h1>
@@ -100,21 +100,21 @@ const Cash = () => {
                             <p onClick={() => copyToClipboard(paymentInfo.name, 'name')} className="cursor-pointer">
                                 {copied.name ? <span className="font-bold text-green-900 border border-green-900 p-1 rounded">{t('cash.copied-to-clipboard')}</span> : paymentInfo.name}
                             </p>
-                            <p onClick={() => copyToClipboard(paymentInfo.address, 'address')} className="cursor-pointer">
+                            <p onClick={() => copyToClipboard(paymentInfo.address, 'address')} className="cursor-pointer mt-4">
                                 {copied.address ? <span className="font-bold text-green-900 border border-green-900 p-1 rounded">{t('cash.copied-to-clipboard')}</span> : paymentInfo.address}
                             </p>
-                            <p onClick={() => copyToClipboard(paymentInfo.iban, 'iban')} className="cursor-pointer">
+                            <p onClick={() => copyToClipboard(paymentInfo.iban, 'iban')} className="cursor-pointer mt-4">
                                 <strong>{t('cash.iban')}</strong>: {copied.iban ? <span className="font-bold text-green-900 border border-green-900 p-1 rounded">{t('cash.copied-to-clipboard')}</span> : paymentInfo.iban}
                             </p>
-                            <p onClick={() => copyToClipboard(paymentInfo.swift, 'swift')} className="cursor-pointer">
+                            <p onClick={() => copyToClipboard(paymentInfo.swift, 'swift')} className="cursor-pointer mt-4">
                                 <strong>{t('cash.swift')}</strong>: {copied.swift ? <span className="font-bold text-green-900 border border-green-900 p-1 rounded">{t('cash.copied-to-clipboard')}</span> : paymentInfo.swift}
                             </p>
-                            <p onClick={() => copyToClipboard(paymentInfo.bank, 'bank')} className="cursor-pointer">
+                            <p onClick={() => copyToClipboard(paymentInfo.bank, 'bank')} className="cursor-pointer mt-4">
                                 <strong>{t('cash.bank')}</strong>: {copied.bank ? <span className="font-bold text-green-900 border border-green-900 p-1 rounded">{t('cash.copied-to-clipboard')}</span> : paymentInfo.bank}
                             </p>
                         </div>
                     )}
-                    <p className="text-gray-500 italic mt-2">{t('cash.copy-to-clipboard-instruction')}</p>
+                    <p className="text-gray-500 italic mt-1">{t('cash.copy-to-clipboard-instruction')}</p>
                 </div>
             </section>
 

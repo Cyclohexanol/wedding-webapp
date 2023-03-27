@@ -12,30 +12,30 @@ const Info = () => {
         <>
             <Header title={t('title')} />
 
-            <main className="bg-stone-100">
+            <main className="bg-white">
                 <section className="max-w-5xl mx-auto py-12">
                     <div className="max-w-2xl mx-auto">
-                        <h1 className="text-3xl font-bold mb-8 text-center">
+                        <h1 className="text-xl font-bold mb-8 text-center">
                             {t('info.wedding.title')}
                         </h1>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                            <div className="bg-white rounded-lg shadow-lg">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div className="border border-stone-900 bg-stone-100 rounded-lg shadow-lg mx-4">
                                 <div className="p-6">
-                                    <h2 className="text-2xl font-semibold mb-4">
+                                    <h2 className="text-lg font-semibold mb-4">
                                         {t('info.wedding.details.when')}
                                     </h2>
-                                    <p className="text-lg">{t('info.wedding.details.date')}</p>
+                                    <p className="text-sm">{t('info.wedding.details.date')}</p>
                                 </div>
                             </div>
 
-                            <div className="bg-white rounded-lg shadow-lg">
-                                <div className="p-6">
-                                    <h2 className="text-2xl font-semibold mb-4">
+                            <div className="border border-stone-900 bg-stone-100 rounded-lg shadow-lg mx-4">
+                                <div className="p-6 text-sm">
+                                    <h2 className="text-lg font-semibold mb-4">
                                         {t('info.wedding.details.where')}
                                     </h2>
-                                    <p className="text-lg">{t('info.wedding.details.location')}</p>
-                                    <p className="text-lg">
+                                    <p>{t('info.wedding.details.location')}</p>
+                                    <p>
                                         <a
                                             href="https://www.google.com/maps/place/Sent.+des+Ruerettes+39,+1800+Vevey/"
                                             target="_blank"
@@ -49,12 +49,12 @@ const Info = () => {
                             </div>
                         </div>
 
-                        <div className="bg-white rounded-lg shadow-lg mb-12">
+                        <div className="border border-stone-900 bg-stone-100 rounded-lg shadow-lg mx-4 mb-4">
                             <div className="p-6">
-                                <h2 className="text-2xl font-semibold mb-4">
+                                <h2 className="text-lg font-semibold mb-4">
                                     {t('info.wedding.details.transport')}
                                 </h2>
-                                <ul className="list-disc list-inside pl-5 text-lg">
+                                <ul className="list-disc list-inside pl-5 text-sm">
                                     <li>
                                         <strong>{t('info.wedding.details.car')}:</strong>{' '}
                                         {t('info.wedding.details.by-car')}
@@ -67,15 +67,15 @@ const Info = () => {
                             </div>
                         </div>
 
-                        <div className="bg-white rounded-lg shadow-lg mb-12">
+                        <div className="border border-stone-900 bg-stone-100 rounded-lg shadow-lg mx-4">
                             <div className="p-6">
-                                <h2 className="text-2xl font-semibold mb-4">
+                                <h2 className="text-lg font-semibold mb-4">
                                     {t('info.wedding.accommodation.title')}
                                 </h2>
-                                <p className="text-lg mb-6">
+                                <p className="text-sm mb-6">
                                     {t('info.wedding.accommodation.description')}
                                 </p>
-                                <ul className="list-disc list-inside pl-5 text-lg">
+                                <ul className="list-disc list-inside pl-5 text-sm">
                                     <li>
                                         <a
                                             href="https://www.moderntimeshotel.ch/"

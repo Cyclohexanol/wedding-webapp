@@ -6,7 +6,7 @@ import {
 
 import { Header } from '../../../components/Header'
 import { Footer } from '../../../components/Footer'
-import WishItem from '../../../components/WishItem';
+import WishItem from '../../../components/WishItemFlat';
 import CartBanner from '../../../components/CartBanner';
 
 import { useState, useEffect } from "react";
@@ -63,6 +63,27 @@ const Gift = () => {
                 return [...prevCart, item];
             }
         });
+
+        if (item.quantity === 0) {
+            userService
+                .removeFromCart(item)
+                .then(() => {
+                    fetchUpdatedWishes();
+                })
+                .catch((error) => {
+                    console.error('Error removing item from cart:', error);
+                });
+        } else {
+            userService
+                .addToCart(item)
+                .then(() => {
+                    fetchUpdatedWishes();
+                })
+                .catch((error) => {
+                    console.error('Error adding item to cart:', error);
+                });
+        }
+
         // Update quantity remaining
         userService.getAllWishes()
             .then(fetchedWishes => {
@@ -73,19 +94,32 @@ const Gift = () => {
             });
     };
 
+    const fetchUpdatedWishes = () => {
+        userService
+            .getAllWishes()
+            .then((fetchedWishes) => {
+                setWishes(fetchedWishes.wishes);
+            })
+            .catch((error) => {
+                console.error('Error fetching wishes:', error);
+            });
+    };
+
     return (
         <>
             <main>
                 <Header title={t('title')} />
-                <div className="flex items-center justify-left px-6 py-2 border-b border-stone-300 bg-stone-100">
-                    {t('wish-list-explaination')}
-                </div>
-                <div className={`m-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 ${cart.length > 0 ? 'pb-20' : ''}`}>
-                    {wishes.map((wish, index) => (
-                        <WishItem key={index} wish={wish} selectedWish={
-                            cart.find((cartItem) => cartItem._id === wish._id)
-                        } updateCart={updateCart} />
-                    ))}
+                <div className="max-w-screen-sm mx-auto">
+                    <div className="flex items-center text-sm justify-left m-2 px-6 py-2 border border-stone-500 bg-stone-200 rounded-lg">
+                        {t('wish-list-explaination')}
+                    </div>
+                    <div className={`m-4 grid grid-cols-1 gap-4 ${cart.length > 0 ? 'pb-20' : ''}`}>
+                        {wishes.map((wish, index) => (
+                            <WishItem key={index} wish={wish} selectedWish={
+                                cart.find((cartItem) => cartItem._id === wish._id)
+                            } updateCart={updateCart} />
+                        ))}
+                    </div>
                 </div>
                 {cart.length > 0 && <CartBanner cart={cart} />}
             </main>

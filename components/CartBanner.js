@@ -17,9 +17,9 @@ const CartBanner = ({ cart }) => {
     };
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 bg-stone-300 py-3 px-6 text-black shadow-md">
+        <div className="fixed bottom-0 left-0 right-0 bg-stone-300 py-3 px-6 text-black shadow-md rounded-t-xl">
             <div className="container mx-auto flex flex-wrap items-center justify-between">
-                <div className="w-full sm:w-auto flex items-center justify-between">
+                <div className="w-full sm:w-auto flex items-center justify-between gap-10">
                     <div>
                         <div className="font-semibold">{t('cartBanner.itemsInCart')}</div>
                         <div>{totalItems}</div>
