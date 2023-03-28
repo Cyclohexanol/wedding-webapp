@@ -180,7 +180,7 @@
     "difficulty": "Difficulté",
     "quiz-intro": "Bienvenue à notre quiz conçu pour tester vos connaissances sur les mariés ! Ce quiz se compose de 20 questions. Les questions faciles valent 3 points tandis que les questions difficiles valent 5 points. Vous avez pouvez quitter la page à tout moment, et reprendre là où vous vous êtes arrêté à votre retour. Cependant, veuillez noter que vous n'avez qu'une seule tentative, alors répondez à chaque question avec soin. Bonne chance !",
     "start-quiz": "Démarrer",
-    "next":  "Suivant",
+    "next": "Suivant",
     "questions": {
         "question-1": {
             "text": "Laquelle des propositions suivantes n’a jamais été mangée par Ambroise ?",
@@ -251,6 +251,76 @@
             "option-b": "Un lit",
             "option-c": "Un BBQ",
             "option-d": "Un KitchenAid"
+        },
+        "question-11": {
+            "text": "Combien de frères a Ambroise ?",
+            "option-a": "2",
+            "option-b": "5",
+            "option-c": "4",
+            "option-d": "3"
+        },
+        "question-12": {
+            "text": "De quelle association Sarah a-t-elle été membre ?",
+            "option-a": "L'armée du salut",
+            "option-b": "L'hopital des nounours",
+            "option-c": "Medecins sans frontières",
+            "option-d": "MEDSTACHE"
+        },
+        "question-13": {
+            "text": "Quel a été le premier plat qu' Ambroise a cuisiné à Sarah ?",
+            "option-a": "Un bibimbap",
+            "option-b": "Un laab ped",
+            "option-c": "Des pâtes au beurre",
+            "option-d": "Du pulled-pork"
+        },
+        "question-14": {
+            "text": "Quel a été le premier plat que Sarah a cuisiné à Ambroise ?",
+            "option-a": "Des pâtes au beurre",
+            "option-b": "Un pad thai",
+            "option-c": "Un risotto aux poireaux",
+            "option-d": "Une parmigiana"
+        },
+        "question-15": {
+            "text": "Que s'est-il passé en 2013 ?",
+            "option-a": "Ambroise a passé son bac",
+            "option-b": "Ambroise et Sarah ont travaillé au Montreux Jazz",
+            "option-c": "Sarah a emménagé seule",
+            "option-d": "Ambroise et Sarah se sont rencontrés"
+        },
+        "question-16": {
+            "text": "Quel a été le premier cadeau de Noël qu'Ambroise a offert à Eric (père de Sarah) ?",
+            "option-a": "Un peigne pour calvicie",
+            "option-b": "Un livre écrit en grande taille pour mal-voyant",
+            "option-c": "Un coussin spécial pour les gens qui ont mal au dos",
+            "option-d": "Une alarme pour retrouver ses clefs"
+        },
+        "question-17": {
+            "text": "Laquelle des propositions suivantes n'est pas une paire de chaussettes qu'Ambroise possède ?",
+            "option-a": "Avec des flamants roses",
+            "option-b": "Avec des piments",
+            "option-c": "Avec des popcorns",
+            "option-d": "Avec des outils"
+        },
+        "question-18": {
+            "text": "Où est-ce que Sarah et Ambroise se sont rencontrés ?",
+            "option-a": "Ils ne savent pas",
+            "option-b": "Dans un train",
+            "option-c": "Sur des pistes de ski",
+            "option-d": "Sur Tinder"
+        },
+        "question-19": {
+            "text": "Quel sport Sarah n'a-t-elle jamais pratiqué ?",
+            "option-a": "Basketball",
+            "option-b": "Judo",
+            "option-c": "Tennis",
+            "option-d": "Équitation"
+        },
+        "question-20": {
+            "text": "Où est partie Sarah pour son Erasmus ?",
+            "option-a": "Cork",
+            "option-b": "Glasgow",
+            "option-c": "Édimbourg",
+            "option-d": "Galway"
         }
     }
 }
