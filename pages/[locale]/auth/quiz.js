@@ -42,7 +42,7 @@ const Quiz = () => {
                 }
             ))
         }
-    });
+    }, []);
 
     // OK
     const fetchUserAnswer = async () => {
@@ -80,7 +80,6 @@ const Quiz = () => {
     const submitAnswer = async (selectedAnswer) => {
         setIsLoading(true);
         const response = await userService.postAnswer(data.memberData._id, data.question.id, selectedAnswer)
-        console.log(response)
         setData(prevData => ({
             ...prevData,
             userAnswer: selectedAnswer,
