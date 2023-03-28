@@ -181,6 +181,11 @@
     "quiz-intro": "Welcome to our quiz designed to test your knowledge about the bride and groom! This quiz consists of 20 questions that are categorized as either easy or hard. Easy questions are worth 3 points while hard questions are worth 5 points. You have the flexibility to pause the quiz and leave the page at any time, and when you return, you can continue where you left off. However, please note that you only have one attempt at the quiz, so make sure to answer each question carefully. Good luck!",
     "start-quiz": "Start Quiz",
     "next": "Next",
+    "your-score": "Your score:",
+    "your-rank": "Your rank:",
+    "rank": "Rank",
+    "score": "Score",
+    "name": "Name",
     "questions": {
         "question-1": {
             "text": "Which of the following has Ambroise never eaten?",
@@ -251,6 +256,76 @@
             "option-b": "A bed",
             "option-c": "A BBQ",
             "option-d": "A KitchenAid"
+        },
+        "question-11": {
+            "text": "How many brothers does Ambroise have?",
+            "option-a": "2",
+            "option-b": "5",
+            "option-c": "4",
+            "option-d": "3"
+        },
+        "question-12": {
+            "text": "Which association was Sarah a member of?",
+            "option-a": "The Salvation Army",
+            "option-b": "The Teddy Bear Hospital",
+            "option-c": "Doctors Without Borders",
+            "option-d": "MEDSTACHE"
+        },
+        "question-13": {
+            "text": "What was the first dish that Ambroise cooked for Sarah?",
+            "option-a": "Bibimbap",
+            "option-b": "Laab Ped",
+            "option-c": "Butter pasta",
+            "option-d": "Pulled pork"
+        },
+        "question-14": {
+            "text": "What was the first dish that Sarah cooked for Ambroise?",
+            "option-a": "Butter pasta",
+            "option-b": "Pad Thai",
+            "option-c": "Leek risotto",
+            "option-d": "Parmigiana"
+        },
+        "question-15": {
+            "text": "What happened in 2013?",
+            "option-a": "Ambroise passed his high school diploma",
+            "option-b": "Ambroise and Sarah worked at the Montreux Jazz Festival",
+            "option-c": "Sarah moved in on her own",
+            "option-d": "Ambroise and Sarah met each other"
+        },
+        "question-16": {
+            "text": "What was the first Christmas gift that Ambroise gave to Eric (Sarah's father)?",
+            "option-a": "A comb for baldness",
+            "option-b": "A large-print book for the visually impaired",
+            "option-c": "A special cushion for people with back pain",
+            "option-d": "An alarm to find his keys"
+        },
+        "question-17": {
+            "text": "Which of the following is not a pair of socks that Ambroise owns?",
+            "option-a": "With flamingos",
+            "option-b": "With chili peppers",
+            "option-c": "With popcorn",
+            "option-d": "With tools"
+        },
+        "question-18": {
+            "text": "Where did Sarah and Ambroise meet?",
+            "option-a": "They don't know",
+            "option-b": "On a train",
+            "option-c": "On ski slopes",
+            "option-d": "On Tinder"
+        },
+        "question-19": {
+            "text": "Which sport has Sarah never practiced?",
+            "option-a": "Basketball",
+            "option-b": "Judo",
+            "option-c": "Tennis",
+            "option-d": "Horse riding"
+        },
+        "question-20": {
+            "text": "Where did Sarah go for her Erasmus?",
+            "option-a": "Cork",
+            "option-b": "Glasgow",
+            "option-c": "Edinburgh",
+            "option-d": "Galway"
         }
     }
 

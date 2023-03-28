@@ -2,14 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\components",
+    "\\helpers",
     "\\pages",
     "\\pages\\[locale]",
     "\\pages\\[locale]\\auth",
-    "\\public\\locales",
-    "\\public\\locales\\en",
-    "\\public\\locales\\fr",
     "\\services"
   ],
-  "SelectedNode": "\\components\\UserTable.js",
+  "SelectedNode": "\\components\\RegisterForm.js",
   "PreviewInSolutionExplorer": false
 }
