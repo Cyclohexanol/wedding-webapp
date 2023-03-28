@@ -157,6 +157,7 @@ const Quiz = () => {
                                                     key={option}
                                                     className={`inline-block px-7 py-4 text-black font-medium text-m leading-tight rounded shadow-md bg-stone-100 w-full sm:w-auto mt-4 sm:mt-0
                                             ${data.userAnswer ? '' : ' hover:bg-stone-400 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out'}
+                                            ${option === data.answer && data.userAnswer && option === data.userAnswer ? ' border-2 border-green-700' : ''}
                                             ${option === data.answer && data.userAnswer && option !== data.userAnswer ? ' border-2 border-green-700' : ''}
                                             ${option !== data.answer && data.userAnswer && option === data.userAnswer ? ' border-2 border-red-700' : ''}
                                         `}
