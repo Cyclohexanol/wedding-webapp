@@ -181,6 +181,11 @@
     "quiz-intro": "Welcome to our quiz designed to test your knowledge about the bride and groom! This quiz consists of 20 questions that are categorized as either easy or hard. Easy questions are worth 3 points while hard questions are worth 5 points. You have the flexibility to pause the quiz and leave the page at any time, and when you return, you can continue where you left off. However, please note that you only have one attempt at the quiz, so make sure to answer each question carefully. Good luck!",
     "start-quiz": "Start Quiz",
     "next": "Next",
+    "your-score": "Your score:",
+    "your-rank": "Your rank:",
+    "rank": "Rank",
+    "score": "Score",
+    "name": "Name",
     "questions": {
         "question-1": {
             "text": "Which of the following has Ambroise never eaten?",

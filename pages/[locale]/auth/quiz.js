@@ -4,9 +4,11 @@ import { Header } from '../../../components/Header';
 import { Footer } from '../../../components/Footer';
 import { useState, useEffect } from "react";
 import { userService } from '../../../services/user.service';
+import { useRouter } from 'next/router'
 
 const Quiz = () => {
     const { t } = useTranslation(['common']);
+    let router= useRouter()
     const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState({
         memberData: null,
@@ -93,7 +95,7 @@ const Quiz = () => {
     //     console.log("Update component data")
     //     let tmpData = {...data, question: questionData};
     //     questionData.correctOption && (tmpData = {...tmpData, answer: questionData.correctOption}); // Tocheck in submitAnswer
-        
+
     //     const userQuizData = await userService.getUserQuiz(data.memberData._id);
     //     tmpData = {...tmpData, userQuiz: userQuizData};
     //     const currentQuestionAnswer = tmpData.question ? userQuizData.userAnswers.find(answer => answer.question_id === tmpData.question.id) : null;
@@ -106,7 +108,11 @@ const Quiz = () => {
     //         tmpData = {...tmpData, userAnswer: newAnswer.correct_answer};
     //     }
     //     setData(tmpData)
-    // };
+    //
+
+    if (data.question && data.question.id < 0) {
+        router.push('/auth/leaderboard')
+    }
 
     return (
         <>
@@ -175,7 +181,11 @@ const Quiz = () => {
                                         </div>
                                     </>
                                 )}
-                                {data.question && data.question.id < 0 && <div className="text-xl font-bold">Quiz is over</div>}
+                                {data.question && data.question.id < 0 && <div>
+                            Quiz is over
+                                    </div>
+                                    
+                                }
                             </div>
                         </main>
 
