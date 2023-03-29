@@ -8,7 +8,7 @@
         "dev-css": "npx tailwindcss -i ./public/globals.css -o ./css/output.css --watch",
         "build": "next build && next export",
         "postbuild": "npm run 404",
-        "server": "next start",
+        "server": "next build && next export && next start",
         "start": "npm run dev",
         "lint": "next lint",
         "test": "npm run lint",
