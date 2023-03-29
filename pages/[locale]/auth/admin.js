@@ -32,6 +32,7 @@ const AdminPanel = () => {
             .getAllUsers()
             .then((data) => {
                 setUsers(data);
+                console.log(data);
             })
             .catch((error) => {
                 console.error('Error fetching users:', error);
