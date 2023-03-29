@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 
 const Quiz = () => {
     const { t } = useTranslation(['common']);
-    let router= useRouter()
+    let router = useRouter()
     const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState({
         memberData: null,
@@ -16,6 +16,7 @@ const Quiz = () => {
         answer: null,
         userQuiz: null,
         userAnswer: null,
+        justAnswered: false
     });
 
     useEffect(() => {
@@ -72,7 +73,8 @@ const Quiz = () => {
             ...prevData,
             question: nextQuestion,
             answer: nextQuestion.correctOption ? nextQuestion.correctOption : null,
-            userAnswer: null
+            userAnswer: null,
+            justAnswered: false
         }))
         await fetchUserAnswer();
         setIsLoading(false);
@@ -82,10 +84,13 @@ const Quiz = () => {
     const submitAnswer = async (selectedAnswer) => {
         setIsLoading(true);
         const response = await userService.postAnswer(data.memberData._id, data.question.id, selectedAnswer)
+        const userQuizData = await userService.getUserQuiz(data.memberData._id);
         setData(prevData => ({
             ...prevData,
             userAnswer: selectedAnswer,
-            answer: response.correct_answer
+            answer: response.correct_answer,
+            justAnswered: true,
+            userQuiz: userQuizData
         }))
         // await updateComponentData(data.question, false, response)
         setIsLoading(false);
@@ -144,7 +149,7 @@ const Quiz = () => {
                                 {data.question && data.question.id > 0 && (
                                     <>
                                         <div className="flex justify-around w-full">
-                                            <div className="text-xl font-bold">Question {data.userQuiz ? data.userQuiz.completedQuestions + (data.userAnswer ? 0 : 1) : ""}</div>
+                                            <div className="text-xl font-bold">Question {data.userQuiz ? data.userQuiz.completedQuestions + (data.justAnswered ? -1 : 0) : ""}</div>
                                             <div className="border border-stone-500 px-2 py-1 rounded">{t(data.question.difficulty.toLowerCase())}</div>
                                         </div>
 
