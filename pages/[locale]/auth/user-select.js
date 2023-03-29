@@ -6,7 +6,7 @@ import {
     getStaticPaths /*, makeStaticProps*/,
     getI18nProps,
 } from '../../../lib/getStatic'
-
+import { useRouter } from 'next/router'
 // import { Header } from '../../../components/Header'
 import { Footer } from '../../../components/Footer'
 import { userService } from '../../../services/user.service';
@@ -14,8 +14,10 @@ import { useEffect, useState } from 'react'
 
 const Home = () => {
     const { t } = useTranslation(['common'])
+    let router = useRouter()
 
-    const [info, setInfo] = useState(undefined);
+    const [info, setInfo] = useState(null);
+    const [member, setMember] = useState(null)
 
     useEffect(() => {
         const fetchInfos = async () => {
@@ -24,6 +26,16 @@ const Home = () => {
         }
         fetchInfos().then(res => setInfo(res));
     }, [])
+
+    useEffect(() => {
+        if (!member) {
+            setMember(() => userService.memberValue)
+        }
+    }, []);
+
+    if (member) {
+        router.push('/auth/home')
+    }
 
     return (
         <>

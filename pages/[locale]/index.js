@@ -34,15 +34,14 @@ const Homepage = () => {
 
     const [errorMessage, setErrorMessage] = useState(null);
 
-    useEffect(() => {
-        const info = localStorage.getItem("info");
-        const member = localStorage.getItem("member");
+    const [member, setMember] = useState(null)
+    const [token, setToken] = useState(null)
 
-        if (info && member) {
-            router.push('/auth/home')
-        } else if (info) {
-            router.push('/auth/user-select')
-        }
+    useEffect(() => {
+        if (!token)
+            setToken(localStorage.getItem("token"));
+        if(!member)
+            setMember(localStorage.getItem("member"));
     }, []);
 
     function onSubmit({ name, password }) {
@@ -57,6 +56,12 @@ const Homepage = () => {
                 alertService.error(message);
                 setErrorMessage(message);
             });
+    }
+
+    if (token && member) {
+        router.push('/auth/home')
+    } else if (token) {
+        router.push('/auth/user-select')
     }
 
   return (

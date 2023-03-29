@@ -71,10 +71,15 @@ const Home = () => {
                             <p>{t('table-seating')}</p>
                         </MenuIcon>
                         {isAdminGroup && (
-                            <MenuIcon linkref="/auth/admin">
-                                <AdminSVG className="w-12 h-12 m-2 hover:stroke-white" />
-                                <p>{t('admin-panel')}</p>
-                            </MenuIcon>
+                            <>
+                                <MenuIcon linkref="/auth/admin">
+                                    <AdminSVG className="w-12 h-12 m-2 hover:stroke-white" />
+                                    <p>{t('admin-panel')}</p>
+                                </MenuIcon>
+                                <MenuIcon linkref="/auth/leaderboard">
+                                    <p>{t('leaderboard')}</p>
+                                </MenuIcon>
+                            </>
                         )}
                         <div className="m-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
                         </div>

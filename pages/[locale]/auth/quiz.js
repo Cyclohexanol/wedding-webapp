@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 
 const Quiz = () => {
     const { t } = useTranslation(['common']);
-    let router= useRouter()
+    let router = useRouter()
     const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState({
         memberData: null,
