@@ -5,6 +5,7 @@ COPY . .
 # install node dependencies
 RUN npm install
 RUN npm run build
+RUN chmod +x ./production_run.sh
 
 # gunicorn
-CMD ["npm", "run", "server"]
+CMD ["./production_run.sh"]
