@@ -1,12 +1,10 @@
 import { BehaviorSubject } from 'rxjs';
-// import getConfig from 'next/config';
-// import { useRouter } from 'next/router'
+import getConfig from 'next/config';
 
 import { fetchWrapper } from '../helpers/fetch-wrapper';
 
-// const { publicRuntimeConfig } = getConfig();
-const isProduction = process.env.BRANCH === 'main';
-export const baseUrl = isProduction ? "https://wedding-api.saamb.app/api" : "https://wedding-api-dev.saamb.app/api";
+const { publicRuntimeConfig } = getConfig();
+export const baseUrl = publicRuntimeConfig.API_URL;
 const tokenSubject = new BehaviorSubject(process.browser && localStorage.getItem('token'));
 const memberSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('member')));
 
