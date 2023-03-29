@@ -149,7 +149,7 @@ const Quiz = () => {
                                 {data.question && data.question.id > 0 && (
                                     <>
                                         <div className="flex justify-around w-full">
-                                            <div className="text-xl font-bold">Question {data.userQuiz ? data.userQuiz.completedQuestions + (data.justAnswered ? -1 : 0) : ""}</div>
+                                            <div className="text-xl font-bold">Question {data.userQuiz ? data.userQuiz.completedQuestions + (data.userAnswer ? 0 : 1) : ""}</div>
                                             <div className="border border-stone-500 px-2 py-1 rounded">{t(data.question.difficulty.toLowerCase())}</div>
                                         </div>
 
