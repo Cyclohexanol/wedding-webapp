@@ -70,4 +70,4 @@ jobs:
               docker rm $CONTAINER_ID
             fi
             docker pull ghcr.io/cyclohexanol/wedding-webapp:main
-            docker run --env BRANCH="main" --name wedding-webapp-prod -dit -p 8080:3000 --name $CONTAINER_NAME ghcr.io/cyclohexanol/wedding-webapp:main
+            docker run --env BRANCH="main" -dit -p 8080:3000 --name $CONTAINER_NAME ghcr.io/cyclohexanol/wedding-webapp:main
