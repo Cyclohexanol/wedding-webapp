@@ -1,4 +1,4 @@
-name: Build and Deploy the APP
+name: Build and Deploy the Prod APP
 
 on:
   push:
@@ -39,7 +39,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: "ghcr.io/cyclohexanol/wedding-webapp:main" #${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
   deploy:
@@ -70,4 +70,4 @@ jobs:
               docker rm $CONTAINER_ID
             fi
             docker pull ghcr.io/cyclohexanol/wedding-webapp:main
-            docker run --env BRANCH="main" --name wedding-webapp-prod -dit -p 8080:3000 --name $CONTAINER_NAME ghcr.io/cyclohexanol/wedding-webapp:main
+            docker run --env NEXT_PUBLIC_BRANCH="main" -dit -p 8080:3000 --name $CONTAINER_NAME ghcr.io/cyclohexanol/wedding-webapp:main
