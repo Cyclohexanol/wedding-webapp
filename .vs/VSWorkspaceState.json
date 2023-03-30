@@ -3,6 +3,7 @@
     "",
     "\\components",
     "\\pages",
+    "\\pages\\auth",
     "\\pages\\[locale]",
     "\\pages\\[locale]\\auth",
     "\\services"
