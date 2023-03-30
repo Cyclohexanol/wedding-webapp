@@ -7,7 +7,7 @@ import DeleteUserModal from './DeleteUserModal';
 import { useTranslation } from "next-i18next";
 
 
-export const UserTable = ({ users, groups }) => {
+export const UserTable = ({ users, groups, questions }) => {
     const { t } = useTranslation("common");
 
     const [modalOpen, setModalOpen] = useState(false);
@@ -77,6 +77,9 @@ export const UserTable = ({ users, groups }) => {
                                 Song Request
                             </th>
                             <th className="px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Quiz
+                            </th>
+                            <th className="px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Edit
                             </th>
                         </tr>
@@ -117,6 +120,13 @@ export const UserTable = ({ users, groups }) => {
                                         <p className="w-25 truncate">
                                             {user.registrationStatus === 'Not registered' ? '' : user.songRequest ? user.songRequest : '-'}
                                         </p>
+                                    </td>
+                                    <td className="px-3 py-4 text-sm whitespace-nowrap max-w-xs">
+                                        <span className="mr-2">{user.userQuiz && user.userQuiz.userAnswers ? user.userQuiz.userAnswers.length : 0}/{questions ? questions.length : "?"} [{user.userQuiz ? user.userQuiz.score : 0} pts]</span>
+                                        {!user.userQuiz ?
+                                            <span className="inline-block w-3 h-3 rounded-full bg-red-500"></span>
+                                            : (user.userQuiz.currentQuestionIndex === -1 ? <span className="inline-block w-3 h-3 rounded-full bg-green-500"></span>
+                                                : <span className="inline-block w-3 h-3 rounded-full bg-yellow-500"></span>)}
                                     </td>
                                     <td className="px-6 py-4 text-sm whitespace-nowrap flex items-center justify-center w-full gap-3">
                                         <button

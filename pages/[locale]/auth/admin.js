@@ -32,7 +32,6 @@ const AdminPanel = () => {
             .getAllUsers()
             .then((data) => {
                 setUsers(data);
-                console.log(data);
             })
             .catch((error) => {
                 console.error('Error fetching users:', error);
@@ -279,7 +278,7 @@ const AdminPanel = () => {
                                     {activeTable === 'groups' ? (
                                         <GroupTable groups={filteredGroups} />
                                     ) : activeTable === 'users' ? (
-                                        <UserTable users={filteredUsers} groups={groups} />
+                                            <UserTable users={filteredUsers} groups={groups} questions={questions} />
                                     ) : activeTable === 'questions' ? (
                                         <QuestionsTable questions={questions} />
                                     ) : (
