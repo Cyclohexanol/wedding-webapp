@@ -44,28 +44,28 @@ const Leaderboard = () => {
                                 </th>
                             </tr>
                         </thead>
-                        <tbody className="bg-white divide-y divide-gray-200">
+                        <tbody className="bg-white divide-y divide-gray-200 text-black">
                             {players.map((player, index) => {
                                 let bgColor;
                                 if (index === 0) {
-                                    bgColor = 'bg-yellow-500';
+                                    bgColor = 'bg-yellow-300';
                                 } else if (index === 1) {
-                                    bgColor = 'bg-neutral-400';
+                                    bgColor = 'bg-neutral-300';
                                 } else if (index === 2) {
-                                    bgColor = 'bg-amber-700';
+                                    bgColor = 'bg-orange-300';
                                 } else {
                                     bgColor = 'bg-white';
                                 }
 
                                 return (
                                     <tr key={index} className={bgColor}>
-                                        <td className={`px-3 py-3 whitespace-nowrap text-sm text-center ${member !== null && player.firstName === member.firstName && player.lastName === member.lastName ? 'font-bold' : 'text-gray-500'}`}>
+                                        <td className={`px-3 py-3 whitespace-nowrap text-sm text-center ${member !== null && player.firstName === member.firstName && player.lastName === member.lastName ? 'font-bold' : ''}`}>
                                             {index + 1}
                                         </td>
-                                        <td className={`px-3 py-3 whitespace-nowrap text-sm text-center ${member !== null && player.firstName === member.firstName && player.lastName === member.lastName ? 'font-bold' : 'text-gray-500'}`}>
+                                        <td className={`px-3 py-3 whitespace-nowrap text-sm text-center ${member !== null && player.firstName === member.firstName && player.lastName === member.lastName ? 'font-bold' : ''}`}>
                                             {player.firstName} {player.lastName.charAt(0)}.
                                         </td>
-                                        <td className={`px-3 py-3 whitespace-nowrap text-sm text-center ${member !== null && player.firstName === member.firstName && player.lastName === member.lastName ? 'font-bold' : 'text-gray-500'}`}>
+                                        <td className={`px-3 py-3 whitespace-nowrap text-sm text-center ${member !== null && player.firstName === member.firstName && player.lastName === member.lastName ? 'font-bold' : ''}`}>
                                             {player.score}
                                         </td>
                                     </tr>

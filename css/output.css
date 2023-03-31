@@ -1255,6 +1255,21 @@ input[type='number']::-webkit-outer-spin-button,
   background-color: rgb(87 83 78 / var(--tw-bg-opacity));
 }
 
+.bg-yellow-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 224 71 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(212 212 212 / var(--tw-bg-opacity));
+}
+
+.bg-orange-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 186 116 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
