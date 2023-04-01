@@ -67,7 +67,6 @@ const Quiz = () => {
 
     // OK
     const getNextQuestion = async () => {
-        setIsLoading(true);
         const nextQuestion = await userService.getNextQuestion(data.memberData._id);
         setData(prevData => ({
             ...prevData,
@@ -77,12 +76,10 @@ const Quiz = () => {
             justAnswered: false
         }))
         await fetchUserAnswer();
-        setIsLoading(false);
     };
 
 
     const submitAnswer = async (selectedAnswer) => {
-        setIsLoading(true);
         const response = await userService.postAnswer(data.memberData._id, data.question.id, selectedAnswer)
         const userQuizData = await userService.getUserQuiz(data.memberData._id);
         setData(prevData => ({
@@ -92,8 +89,6 @@ const Quiz = () => {
             justAnswered: true,
             userQuiz: userQuizData
         }))
-        // await updateComponentData(data.question, false, response)
-        setIsLoading(false);
     };
 
     // const updateComponentData = async (questionData, resetUserAnswer = false, newAnswer = null) => {
