@@ -1,13 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\components",
-    "\\pages",
-    "\\pages\\auth",
-    "\\pages\\[locale]",
-    "\\pages\\[locale]\\auth",
-    "\\services"
+    "\\public"
   ],
-  "SelectedNode": "\\pages\\[locale]\\auth\\leaderboard.js",
+  "SelectedNode": "\\tailwind.config.js",
   "PreviewInSolutionExplorer": false
 }
