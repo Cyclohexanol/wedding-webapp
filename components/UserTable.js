@@ -5,7 +5,6 @@ import AddUserModal from './AddUserModal';
 import EditUserModal from './EditUserModal';
 import DeleteUserModal from './DeleteUserModal';
 import { useTranslation } from "next-i18next";
-import XLSX from 'xlsx';
 
 
 export const UserTable = ({ users, groups, questions }) => {
@@ -45,14 +44,7 @@ export const UserTable = ({ users, groups, questions }) => {
     };
 
     const exportToExcel = () => {
-        const fileName = 'users.xlsx';
-        const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
-        const fileExtension = '.xlsx';
-        const ws = XLSX.utils.json_to_sheet(users);
-        const wb = { Sheets: { 'data': ws }, SheetNames: ['data'] };
-        const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
-        const data = new Blob([excelBuffer], { type: fileType });
-        FileSaver.saveAs(data, fileName + fileExtension);
+        console.log(users);
     };
 
 
@@ -177,7 +169,7 @@ export const UserTable = ({ users, groups, questions }) => {
                 <button
                     className="text-center inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded 
                                                                     shadow-md bg-green-900 hover:bg-stone-400 hover:shadow-lg focus:shadow-lg focus:outline-none 
-                                                                    focus:ring-0 active:shadow-lg transition duration-150 ease-in-out mb-3"
+                                                                    focus:ring-0 active:shadow-lg transition duration-150 ease-in-out mb-3 ml-3"
                     onClick={exportToExcel}
                 >
                     Export
