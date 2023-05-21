@@ -5,6 +5,7 @@ import AddUserModal from './AddUserModal';
 import EditUserModal from './EditUserModal';
 import DeleteUserModal from './DeleteUserModal';
 import { useTranslation } from "next-i18next";
+import XLSX from 'xlsx';
 
 
 export const UserTable = ({ users, groups, questions }) => {
