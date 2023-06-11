@@ -116,7 +116,9 @@
                 "tain": "Train",
                 "by-car": "Parking organisé sur place",
                 "by-train": "La maison est à 3 minutes de la gare 'Vevey Vigneron', le train part de Vevey Gare à 15h11",
-                "map": "Ouvrir sur Google Maps"
+                "map": "Ouvrir sur Google Maps",
+                "brunch": "Brunch",
+                "brunch-details": "Le brunch aura lieu le lendemain à 11h00 au même endroit. Prenez vos maillots de bain et une serviette!"
             },
             "accommodation": {
                 "title": "Options d'hébergement",
