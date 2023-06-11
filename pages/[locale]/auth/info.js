@@ -67,7 +67,7 @@ const Info = () => {
                             </div>
                         </div>
 
-                        <div className="border border-stone-900 bg-stone-100 rounded-lg shadow-lg mx-4">
+                        <div className="border border-stone-900 bg-stone-100 rounded-lg shadow-lg mx-4 mb-4">
                             <div className="p-6">
                                 <h2 className="text-lg font-semibold mb-4">
                                     {t('info.wedding.accommodation.title')}
